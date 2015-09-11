@@ -1,4 +1,4 @@
-var backLayer, city = 0, run = 1, score = 0, length = 0, play = 0, playList = {},
+var backLayer, city = 0, run = 1, score = 0, scoreAll = 0, length = 0, play = 0, playList = {},
 	imgList = {}, 
 	imgData = new Array(
 		{name:"bg_1", path:"./imgs/page1_bg.jpg"},
@@ -304,6 +304,7 @@ var backLayer, city = 0, run = 1, score = 0, length = 0, play = 0, playList = {}
 function main(){
 	LGlobal.align = LStageAlign.MIDDLE;
 	LGlobal.stageScale = LStageScaleMode.SHOW_ALL;
+	LGlobal.preventDefault = false;
 	LSystem.screen(LStage.FULL_SCREEN);
 	
 	//游戏逐层初始化
@@ -312,7 +313,14 @@ function main(){
 	addChild(backLayer);
 	
 	LLoadManage.load(imgData, function(progress){}, bInit);
+};
+function bInit(result){
+	imgList = result;
 	
+	//背景图片显示
+	var loadBg = new LBitmap(new LBitmapData(imgList["bg_1"]));
+	backLayer.addChild(loadBg);
+		
 	LLoadManage.load(imgDataLondon12, function(progress){}, bLondon12);
 	LLoadManage.load(imgDataLondon15, function(progress){}, bLondon15);
 	LLoadManage.load(imgDataLondon23, function(progress){}, bLondon23);
@@ -336,13 +344,6 @@ function main(){
 	LLoadManage.load(imgDataZurich34, function(progress){}, bZurich34);
 	LLoadManage.load(imgDataZurich35, function(progress){}, bZurich35);
 	LLoadManage.load(imgDataZurich45, function(progress){}, bZurich45);
-};
-function bInit(result){
-	imgList = result;
-	
-	//背景图片显示
-	var loadBg = new LBitmap(new LBitmapData(imgList["bg_1"]));
-	backLayer.addChild(loadBg);
 };
 
 function bLondon12(result){ imgLondon12 = result; };
@@ -374,7 +375,9 @@ function step_1(){
 };
 
 function step_2(){
-	$('.slogan, .btnStart, .btnLink').fadeOut(300);
+	$('.slogan, .btnStart, .btnLink').fadeOut(300, function(){
+		$(this).remove();
+	});
 	
 	setTimeout(function(){
 		
@@ -395,6 +398,18 @@ function step_2(){
 }
 
 function cityRun(){
+	if(run == 1 || run == 3 || run == 5 || run == 7){
+		$('button span','.cityForm').removeAttr('class').addClass('run' + (run-1) / 2);
+	}
+	
+	if(run == 8){
+		$('button span', '.cityForm').removeAttr('class').addClass('run4');
+		$('input','.cityForm').val('');
+		cityEnd();
+		run = 0;
+		return false;
+	}
+	
 	play = 0;
 	if(city == 0){
 		switch (run){
@@ -407,6 +422,7 @@ function cityRun(){
 				length = imgLondon15.length;
 				playList = imgLondon15;
 				run = 0;
+				score += 5;
 			break;
 			case 3:
 				length = imgLondon23.length;
@@ -417,6 +433,7 @@ function cityRun(){
 				length = imgLondon25.length;
 				playList = imgLondon25;
 				run = 0;
+				score += 4;
 			break;
 			case 5:
 				length = imgLondon34.length;
@@ -427,11 +444,12 @@ function cityRun(){
 				length = imgLondon35.length;
 				playList = imgLondon35;
 				run = 0;
+				score += 3;
 			break;
 			case 7:
 				length = imgLondon45.length;
 				playList = imgLondon45;
-				run = 0;
+				run = 8;
 			break;
 		}
 	}else if(city == 1){
@@ -445,6 +463,7 @@ function cityRun(){
 				length = imgMilan15.length;
 				playList = imgMilan15;
 				run = 0;
+				score += 5;
 			break;
 			case 3:
 				length = imgMilan23.length;
@@ -455,6 +474,7 @@ function cityRun(){
 				length = imgMilan25.length;
 				playList = imgMilan25;
 				run = 0;
+				score += 4;
 			break;
 			case 5:
 				length = imgMilan34.length;
@@ -465,11 +485,12 @@ function cityRun(){
 				length = imgMilan35.length;
 				playList = imgMilan35;
 				run = 0;
+				score += 3;
 			break;
 			case 7:
 				length = imgMilan45.length;
 				playList = imgMilan45;
-				run = 0;
+				run = 8;
 			break;
 		}
 	}else if(city == 2){
@@ -483,6 +504,7 @@ function cityRun(){
 				length = imgZurich15.length;
 				playList = imgZurich15;
 				run = 0;
+				score += 5;
 			break;
 			case 3:
 				length = imgZurich23.length;
@@ -493,6 +515,7 @@ function cityRun(){
 				length = imgZurich25.length;
 				playList = imgZurich25;
 				run = 0;
+				score += 4;
 			break;
 			case 5:
 				length = imgZurich34.length;
@@ -503,11 +526,12 @@ function cityRun(){
 				length = imgZurich35.length;
 				playList = imgZurich35;
 				run = 0;
+				score += 3;
 			break;
 			case 7:
 				length = imgZurich45.length;
 				playList = imgZurich45;
-				run = 0;
+				run = 8;
 			break;
 		}
 	}
@@ -528,34 +552,113 @@ function onFrame(){
 	if(play >= length){
 		backLayer.die();
 		$('input','.cityForm').val('');
+		
 		if(run == 0){
 			cityEnd();
 		}
 	};
 }
 function cityEnd(){
+	console.log(score);
 	$('.cityForm').removeClass('run');
+	var obj;
+	if(city==0){
+		obj = $('.cityLondon');
+	}else if(city==1){
+		obj = $('.cityMilan');
+	}else if(city==2){
+		obj = $('.cityZurich');
+	}else{
+		return false;
+	}
 	
+	scoreAll += score;
 	
-}
+	$('.cityTip strong em', obj).html(score);
+	
+	if(score == 0){
+		$('.cityTip p', obj).html('你没有猜对，这座城市是：'+ $('.cityForm').data('val'));
+	}
+	
+	obj.css('z-index', 3);
+	$('.cityTip', obj).show().animate({opacity:1, marginTop:-510}, 500);
+	$('.cityInfo', obj).delay(500).fadeIn(0).animate({opacity:1, marginTop:-134}, 500);
+};
 
-init(60, 'wrap', 750, window.innerHeight, main); //初始化框架
+function changeCity(){
+	var loadBg;
+	score = 0;
+	run = 1;
+	$('button span', '.cityForm').removeAttr('class');
+	if(city==0){
+		$('.cityLondon').css('z-index', 0).children().fadeOut(300);
+		
+		//城市 Milan
+		loadBg = new LBitmap(new LBitmapData(imgMilan12["0"]));
+		$('.cityForm').addClass('run').data('val', '米兰');
+		
+		city = 1;
+	}else if(city==1){
+		$('.cityMilan').css('z-index', 0).children().fadeOut(300);
+		
+		//城市 Milan
+		var loadBg = new LBitmap(new LBitmapData(imgZurich12["0"]));
+		backLayer.addChild(loadBg);
+		
+		$('.cityForm').addClass('run').data('val', '苏黎世');
+		
+		city = 2;
+	}else if(city==2){
+		$('.cityZurich').css('z-index', 0).children().fadeOut(300);
+		
+		loadBg = new LBitmap(new LBitmapData(imgList["bg_2"]));
+		city = 3;
+	}else{
+		return false;
+	}
+	
+	//背景层清空
+	backLayer.die();
+	backLayer.removeAllChild();
+	backLayer.addChild(loadBg);
+	
+	if(city == 3){
+		$('.score').find('strong').html(scoreAll);
+		$('.score').show().animate({opacity:1,marginTop:-367}, 500);
+	};
+};
 
-
-
-
-
+init(60, 'wrap', window.innerWidth, window.innerHeight, main); //初始化框架
 
 
 $(function(){
+	
+	$(window).trigger('orientationchange');
 	
 	var bgRun = setInterval(function(){
 		$('#loading').hasClass('run')? $('#loading').removeClass('run') : $('#loading').addClass('run');
 	}, 200);
 	
+	var dot=0;
+	var dotRun = setInterval(function(){
+		$('em', '#loading').eq(dot).show();
+		dot++;
+		if(dot > 3){
+			dot = 0;
+			$('em', '#loading').hide();
+		}
+	}, 500);
+	
 	
 	var imgs = [
-		"page1_bg.jpg"
+		"logo_1.png", "spriteBg.jpg", "page1_bg.jpg", "page3_bg.jpg", "arrow.png", "btnFull.png", "btnEmpty.png", "mobile.png", 
+		"spriteCityCont_1.png", "spriteCityCont_2.png", "spriteScore.png", "wx_code.png", "shareTip.png",
+		"city/london/12/0.jpg", "city/london/12/1.jpg", "city/london/12/2.jpg", "city/london/12/3.jpg", "city/london/12/4.jpg", "city/london/12/5.jpg",
+		"city/london/12/6.jpg", "city/london/12/7.jpg", "city/london/12/8.jpg", "city/london/12/9.jpg", "city/london/12/10.jpg", "city/london/12/11.jpg",
+		"city/london/15/0.jpg", "city/london/15/1.jpg", "city/london/15/2.jpg", "city/london/15/3.jpg", "city/london/15/4.jpg", "city/london/15/5.jpg",
+		"city/london/15/6.jpg", "city/london/15/7.jpg", "city/london/15/8.jpg", "city/london/15/9.jpg", "city/london/15/10.jpg", "city/london/15/11.jpg",
+		"city/london/23/0.jpg", "city/london/23/1.jpg", "city/london/23/2.jpg", "city/london/23/3.jpg", "city/london/23/4.jpg", "city/london/23/5.jpg",
+		"city/london/23/6.jpg", "city/london/23/7.jpg", "city/london/23/8.jpg", "city/london/23/9.jpg", "city/london/23/10.jpg", "city/london/23/11.jpg"
 	];
 
 	$.preloadimg(imgs, function(){
@@ -564,17 +667,13 @@ $(function(){
 		});
 		
 		$("#loading").delay(500).fadeOut(300,function(){
-			clearInterval(bgRun);
+			clearInterval(bgRun,dotRun);
 			$(this).remove();
 			step_1();
 		});
 	});	
 	
-	$(".page").on('mousemove touchmove', 'img', function(e){
-		e.preventDefault();
-	});
-	
-	$('.btnStart').click(function(){
+	$('.btnStart').on('click', function(){
 		step_2();
 	});
 	
@@ -597,14 +696,68 @@ $(function(){
 					break;
 				case 5:
 					run = 6;
-					break
+					break;
+				case 8:
+					score += 1;
+					break;
 			};
+		}else{
+			if(run == 8){
+				score += 0;
+			}
 		}
 		
 		cityRun();
 	});
 	
+	$('.btnNext').click(changeCity);
 	
+	$('.btnAgain').click(function(){
+		score = 0;
+		scoreAll = 0;
+		city = 0;
+		
+		$('.score').fadeOut(300,function(){
+			$(this).removeAttr('style');
+		});
+		
+		$('p', '.cityTip').html('恭喜！您答对了');
+		
+		$('.cityLondon, .cityMilan, .cityZurich').css('z-index', 0).children().removeAttr('style');
+		
+		step_2();
+	});
+	
+	$('.btnGift').click(function(){
+		$('.score').fadeOut(300,function(){
+			$(this).removeAttr('style');
+		});
+		$('.giftForm').show().animate({opacity:1, marginTop:-324}, 500);
+	});
+	
+	$('.btnSubmit').click(function(){
+		$('.giftForm').fadeOut(300);
+		$('.shareTip').addClass('run');
+		$('.shareBox').show().animate({opacity:1, top:0}, 500)
+	})
+	
+	
+	
+});
+
+$(window).on("scroll.elasticity", function(e) {
+	e.preventDefault()
+}).on("touchmove.elasticity", function(e) {
+	e.preventDefault()
+}).bind('orientationchange', function(e){
+	if (window.orientation == 0 || window.orientation == 180) {
+		//orientation = 'portrait';
+		$('.landscape').hide();
+	}else if (window.orientation == 90 || window.orientation == -90) {
+		//orientation = 'landscape';
+		$('.landscape').show();
+	}
+	return false;
 });
 
 $.extend({
