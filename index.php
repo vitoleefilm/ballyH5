@@ -1,4 +1,8 @@
-<!doctype html>
+<?php
+require_once "weixin.php";
+// $jssdk = new WEIXIN("wxa7f65d2ea613627a", "38b39a59114fbafee8b70c6d673a52b7");
+// $signPackage = $jssdk->GetSignPackage();
+?><!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -149,9 +153,18 @@
 			<source src="audio/audio.mp3" type="audio/mpeg">
 		</audio>
 	</section>-->
+	<script type="text/javascript">
+		/*appId 		= '<?php echo $signPackage["appId"];?>',
+        timestamp 	= <?php echo $signPackage["timestamp"];?>,
+        nonceStr 	= '<?php echo $signPackage["nonceStr"];?>',
+        signature 	= '<?php echo $signPackage["signature"];?>',
+        */
+	</script>
 	
 	<script src="js/jquery-2.1.3.min.js"></script>
 	<script src="js/lufylegend-1.9.10.min.js"></script>
 	<script src="js/common.js"></script>
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script src="js/backend.js"></script>
 </body>
 </html>

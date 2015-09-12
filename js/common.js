@@ -722,6 +722,8 @@ $(function(){
 		});
 		
 		$('p', '.cityTip').html('恭喜！您答对了');
+
+		$('.giftForm .play_time').val(parseInt($('.giftForm .play_time').val()) + 1);
 		
 		$('.cityLondon, .cityMilan, .cityZurich').css('z-index', 0).children().removeAttr('style');
 		
@@ -734,15 +736,6 @@ $(function(){
 		});
 		$('.giftForm').show().animate({opacity:1, marginTop:-324}, 500);
 	});
-	
-	$('.btnSubmit').click(function(){
-		$('.giftForm').fadeOut(300);
-		$('.shareTip').addClass('run');
-		$('.shareBox').show().animate({opacity:1, top:0}, 500)
-	})
-	
-	
-	
 });
 
 $(window).on("scroll.elasticity", function(e) {
