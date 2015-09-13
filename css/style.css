@@ -179,6 +179,7 @@ body{width:750px;margin:0 auto;background:#fff;box-sizing:border-box;-moz-box-si
 .giftForm .info ul{margin-top:40px}
 .giftForm .info li{width:460px;margin:24px auto 0}
 .giftForm .info li input{width:456px;height:75px;font-size:24px;color:#535a64;text-align:center;border:2px solid #535a64;letter-spacing:10px}
+.giftForm .info li.error input{border-color:#f00;color:#f00}
 .giftForm .info li button{width:460px;height:79px;color:#fff;font-size:24px;background-color:#535a64;text-align:center;letter-spacing:10px}
 
 /* 提交成功，分享 */

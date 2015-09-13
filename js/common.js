@@ -1,5 +1,6 @@
-var backLayer, city = 0, run = 1, score = 0, scoreAll = 0, length = 0, play = 0, playList = {},
-	imgList = {}, 
+var backLayer, background, treeLayer, treeBg, codeLayer, codeBg, 
+	city = 0, run = 1, score = 0, scoreAll = 0, length = 0, play = 0, tree = 0, code = 0,
+	imgList = {}, playList = {}, treeList = {}, codeList = {},
 	imgData = new Array(
 		{name:"bg_1", path:"./imgs/page1_bg.jpg"},
 		{name:"bg_2", path:"./imgs/page3_bg.jpg"}
@@ -299,6 +300,131 @@ var backLayer, city = 0, run = 1, score = 0, scoreAll = 0, length = 0, play = 0,
 		{name:'8', path:"./imgs/city/zurich/45/8.jpg"},
 		{name:'9', path:"./imgs/city/zurich/45/9.jpg"},
 		{name:'10', path:"./imgs/city/zurich/45/10.jpg"}
+	),
+	
+	imgTree4 = {}, imgTree5 = {}, imgTree15 = {}, imgTree25 = {}, imgTree34 = {}, imgTree35 = {}, imgTree45 = {}, 
+	imgDataTree4 = new Array(
+		{name:'0', path:"./imgs/tree/milan/4/0.png"}, {name:'1', path:"./imgs/tree/milan/4/1.png"}, {name:'2', path:"./imgs/tree/milan/4/2.png"},
+		{name:'3', path:"./imgs/tree/milan/4/3.png"}, {name:'4', path:"./imgs/tree/milan/4/4.png"}, {name:'5', path:"./imgs/tree/milan/4/5.png"},
+		{name:'6', path:"./imgs/tree/milan/4/6.png"}, {name:'7', path:"./imgs/tree/milan/4/7.png"}, {name:'8', path:"./imgs/tree/milan/4/8.png"},
+		{name:'9', path:"./imgs/tree/milan/4/9.png"}, {name:'10', path:"./imgs/tree/milan/4/10.png"}, {name:'11', path:"./imgs/tree/milan/4/11.png"},
+		{name:'12', path:"./imgs/tree/milan/4/12.png"}, {name:'13', path:"./imgs/tree/milan/4/13.png"}, {name:'14', path:"./imgs/tree/milan/4/14.png"},
+		{name:'15', path:"./imgs/tree/milan/4/15.png"}, {name:'16', path:"./imgs/tree/milan/4/16.png"}, {name:'17', path:"./imgs/tree/milan/4/17.png"},
+		{name:'18', path:"./imgs/tree/milan/4/18.png"}, {name:'19', path:"./imgs/tree/milan/4/19.png"}
+	),
+	imgDataTree5 = new Array(
+		{name:'0', path:"./imgs/tree/milan/5/0.png"}, {name:'1', path:"./imgs/tree/milan/5/1.png"}, {name:'2', path:"./imgs/tree/milan/5/2.png"},
+		{name:'3', path:"./imgs/tree/milan/5/3.png"}, {name:'4', path:"./imgs/tree/milan/5/4.png"}, {name:'5', path:"./imgs/tree/milan/5/5.png"},
+		{name:'6', path:"./imgs/tree/milan/5/6.png"}, {name:'7', path:"./imgs/tree/milan/5/7.png"}, {name:'8', path:"./imgs/tree/milan/5/8.png"},
+		{name:'9', path:"./imgs/tree/milan/5/9.png"}, {name:'10', path:"./imgs/tree/milan/5/10.png"}, {name:'11', path:"./imgs/tree/milan/5/11.png"},
+		{name:'12', path:"./imgs/tree/milan/5/12.png"}, {name:'13', path:"./imgs/tree/milan/5/13.png"}, {name:'14', path:"./imgs/tree/milan/5/14.png"},
+		{name:'15', path:"./imgs/tree/milan/5/15.png"}, {name:'16', path:"./imgs/tree/milan/5/16.png"}, {name:'17', path:"./imgs/tree/milan/5/17.png"},
+		{name:'18', path:"./imgs/tree/milan/5/18.png"}, {name:'19', path:"./imgs/tree/milan/5/19.png"}
+	),
+	imgDataTree15 = new Array(
+		{name:'0', path:"./imgs/tree/milan/15/0.png"}, {name:'1', path:"./imgs/tree/milan/15/1.png"}, {name:'2', path:"./imgs/tree/milan/15/2.png"},
+		{name:'3', path:"./imgs/tree/milan/15/3.png"}, {name:'4', path:"./imgs/tree/milan/15/4.png"}, {name:'5', path:"./imgs/tree/milan/15/5.png"}
+	),
+	imgDataTree25 = new Array(
+		{name:'0', path:"./imgs/tree/milan/25/0.png"}, {name:'1', path:"./imgs/tree/milan/25/1.png"}, {name:'2', path:"./imgs/tree/milan/25/2.png"},
+		{name:'3', path:"./imgs/tree/milan/25/3.png"}, {name:'4', path:"./imgs/tree/milan/25/4.png"}, {name:'5', path:"./imgs/tree/milan/25/5.png"}
+	),
+	imgDataTree34 = new Array(
+		{name:'0', path:"./imgs/tree/milan/34/0.png"}, {name:'1', path:"./imgs/tree/milan/34/1.png"}, {name:'2', path:"./imgs/tree/milan/34/2.png"},
+		{name:'3', path:"./imgs/tree/milan/34/3.png"}, {name:'4', path:"./imgs/tree/milan/34/4.png"}, {name:'5', path:"./imgs/tree/milan/34/5.png"}, 
+		{name:'6', path:"./imgs/tree/milan/34/6.png"}
+	),
+	imgDataTree35 = new Array(
+		{name:'0', path:"./imgs/tree/milan/35/0.png"}, {name:'1', path:"./imgs/tree/milan/35/1.png"}, {name:'2', path:"./imgs/tree/milan/35/2.png"},
+		{name:'3', path:"./imgs/tree/milan/35/3.png"}, {name:'4', path:"./imgs/tree/milan/35/4.png"}, {name:'5', path:"./imgs/tree/milan/35/5.png"}, 
+		{name:'6', path:"./imgs/tree/milan/45/6.png"}
+	),
+	imgDataTree45 = new Array(
+		{name:'0', path:"./imgs/tree/milan/45/0.png"}, {name:'1', path:"./imgs/tree/milan/45/1.png"}, {name:'2', path:"./imgs/tree/milan/45/2.png"},
+		{name:'3', path:"./imgs/tree/milan/45/3.png"}, {name:'4', path:"./imgs/tree/milan/45/4.png"}, {name:'5', path:"./imgs/tree/milan/45/5.png"}, 
+		{name:'6', path:"./imgs/tree/milan/45/6.png"}
+	),
+	
+	imgCode01 = {}, imgCode02 = {}, imgCode03 = {}, imgCode11 = {}, imgCode12 = {}, imgCode13 = {}, imgCode21 = {}, imgCode22 = {}, imgCode23 = {},
+	imgDataCode01 = new Array(
+		{name:'0', path:"./imgs/code/london/1/0.png"}, {name:'1', path:"./imgs/code/london/1/1.png"}, {name:'2', path:"./imgs/code/london/1/2.png"},
+		{name:'3', path:"./imgs/code/london/1/3.png"}, {name:'4', path:"./imgs/code/london/1/4.png"}, {name:'5', path:"./imgs/code/london/1/5.png"},
+		{name:'6', path:"./imgs/code/london/1/6.png"}, {name:'7', path:"./imgs/code/london/1/7.png"}, {name:'8', path:"./imgs/code/london/1/8.png"},
+		{name:'9', path:"./imgs/code/london/1/9.png"}, {name:'10', path:"./imgs/code/london/1/10.png"}, {name:'11', path:"./imgs/code/london/1/11.png"},
+		{name:'12', path:"./imgs/code/london/1/12.png"}, {name:'13', path:"./imgs/code/london/1/13.png"}, {name:'14', path:"./imgs/code/london/1/14.png"},
+		{name:'15', path:"./imgs/code/london/1/15.png"}, {name:'16', path:"./imgs/code/london/1/16.png"}, {name:'17', path:"./imgs/code/london/1/17.png"},
+		{name:'18', path:"./imgs/code/london/1/18.png"}, {name:'19', path:"./imgs/code/london/1/19.png"}
+	),
+	imgDataCode02 = new Array(
+		{name:'0', path:"./imgs/code/london/2/0.png"}, {name:'1', path:"./imgs/code/london/2/1.png"}, {name:'2', path:"./imgs/code/london/2/2.png"},
+		{name:'3', path:"./imgs/code/london/2/3.png"}, {name:'4', path:"./imgs/code/london/2/4.png"}, {name:'5', path:"./imgs/code/london/2/5.png"},
+		{name:'6', path:"./imgs/code/london/2/6.png"}, {name:'7', path:"./imgs/code/london/2/7.png"}, {name:'8', path:"./imgs/code/london/2/8.png"},
+		{name:'9', path:"./imgs/code/london/2/9.png"}, {name:'10', path:"./imgs/code/london/2/10.png"}, {name:'11', path:"./imgs/code/london/2/11.png"},
+		{name:'12', path:"./imgs/code/london/2/12.png"}, {name:'13', path:"./imgs/code/london/2/13.png"}, {name:'14', path:"./imgs/code/london/2/14.png"},
+		{name:'15', path:"./imgs/code/london/2/15.png"}, {name:'16', path:"./imgs/code/london/2/16.png"}, {name:'17', path:"./imgs/code/london/2/17.png"},
+		{name:'18', path:"./imgs/code/london/2/18.png"}, {name:'19', path:"./imgs/code/london/2/19.png"}
+	),
+	imgDataCode03 = new Array(
+		{name:'0', path:"./imgs/code/london/3/0.png"}, {name:'1', path:"./imgs/code/london/3/1.png"}, {name:'2', path:"./imgs/code/london/3/2.png"},
+		{name:'3', path:"./imgs/code/london/3/3.png"}, {name:'4', path:"./imgs/code/london/3/4.png"}, {name:'5', path:"./imgs/code/london/3/5.png"},
+		{name:'6', path:"./imgs/code/london/3/6.png"}, {name:'7', path:"./imgs/code/london/3/7.png"}, {name:'8', path:"./imgs/code/london/3/8.png"},
+		{name:'9', path:"./imgs/code/london/3/9.png"}, {name:'10', path:"./imgs/code/london/3/10.png"}, {name:'11', path:"./imgs/code/london/3/11.png"}
+	),
+	
+	imgDataCode11 = new Array(
+		{name:'0', path:"./imgs/code/milan/1/0.png"}, {name:'1', path:"./imgs/code/milan/1/1.png"}, {name:'2', path:"./imgs/code/milan/1/2.png"},
+		{name:'3', path:"./imgs/code/milan/1/3.png"}, {name:'4', path:"./imgs/code/milan/1/4.png"}, {name:'5', path:"./imgs/code/milan/1/5.png"},
+		{name:'6', path:"./imgs/code/milan/1/6.png"}, {name:'7', path:"./imgs/code/milan/1/7.png"}, {name:'8', path:"./imgs/code/milan/1/8.png"},
+		{name:'9', path:"./imgs/code/milan/1/9.png"}, {name:'10', path:"./imgs/code/milan/1/10.png"}, {name:'11', path:"./imgs/code/milan/1/11.png"},
+		{name:'12', path:"./imgs/code/milan/1/12.png"}, {name:'13', path:"./imgs/code/milan/1/13.png"}, {name:'14', path:"./imgs/code/milan/1/14.png"},
+		{name:'15', path:"./imgs/code/milan/1/15.png"}, {name:'16', path:"./imgs/code/milan/1/16.png"}, {name:'17', path:"./imgs/code/milan/1/17.png"},
+		{name:'18', path:"./imgs/code/milan/1/18.png"}, {name:'19', path:"./imgs/code/milan/1/19.png"}
+	),
+	imgDataCode12 = new Array(
+		{name:'0', path:"./imgs/code/milan/2/0.png"}, {name:'1', path:"./imgs/code/milan/2/1.png"}, {name:'2', path:"./imgs/code/milan/2/2.png"},
+		{name:'3', path:"./imgs/code/milan/2/3.png"}, {name:'4', path:"./imgs/code/milan/2/4.png"}, {name:'5', path:"./imgs/code/milan/2/5.png"},
+		{name:'6', path:"./imgs/code/milan/2/6.png"}, {name:'7', path:"./imgs/code/milan/2/7.png"}, {name:'8', path:"./imgs/code/milan/2/8.png"},
+		{name:'9', path:"./imgs/code/milan/2/9.png"}, {name:'10', path:"./imgs/code/milan/2/10.png"}, {name:'11', path:"./imgs/code/milan/2/11.png"},
+		{name:'12', path:"./imgs/code/milan/2/12.png"}, {name:'13', path:"./imgs/code/milan/2/13.png"}, {name:'14', path:"./imgs/code/milan/2/14.png"},
+		{name:'15', path:"./imgs/code/milan/2/15.png"}, {name:'16', path:"./imgs/code/milan/2/16.png"}, {name:'17', path:"./imgs/code/milan/2/17.png"},
+		{name:'18', path:"./imgs/code/milan/2/18.png"}, {name:'19', path:"./imgs/code/milan/2/19.png"}
+	),
+	imgDataCode13 = new Array(
+		{name:'0', path:"./imgs/code/milan/3/0.png"}, {name:'1', path:"./imgs/code/milan/3/1.png"}, {name:'2', path:"./imgs/code/milan/3/2.png"},
+		{name:'3', path:"./imgs/code/milan/3/3.png"}, {name:'4', path:"./imgs/code/milan/3/4.png"}, {name:'5', path:"./imgs/code/milan/3/5.png"},
+		{name:'6', path:"./imgs/code/milan/3/6.png"}, {name:'7', path:"./imgs/code/milan/3/7.png"}, {name:'8', path:"./imgs/code/milan/3/8.png"},
+		{name:'9', path:"./imgs/code/milan/3/9.png"}, {name:'10', path:"./imgs/code/milan/3/10.png"}, {name:'11', path:"./imgs/code/milan/3/11.png"},
+		{name:'12', path:"./imgs/code/milan/3/12.png"}, {name:'13', path:"./imgs/code/milan/3/13.png"}, {name:'14', path:"./imgs/code/milan/3/14.png"},
+		{name:'15', path:"./imgs/code/milan/3/15.png"}, {name:'16', path:"./imgs/code/milan/3/16.png"}, {name:'17', path:"./imgs/code/milan/3/17.png"},
+		{name:'18', path:"./imgs/code/milan/3/18.png"}, {name:'19', path:"./imgs/code/milan/3/19.png"}
+	),
+	
+	imgDataCode21 = new Array(
+		{name:'0', path:"./imgs/code/zurich/1/0.png"}, {name:'1', path:"./imgs/code/zurich/1/1.png"}, {name:'2', path:"./imgs/code/zurich/1/2.png"},
+		{name:'3', path:"./imgs/code/zurich/1/3.png"}, {name:'4', path:"./imgs/code/zurich/1/4.png"}, {name:'5', path:"./imgs/code/zurich/1/5.png"},
+		{name:'6', path:"./imgs/code/zurich/1/6.png"}, {name:'7', path:"./imgs/code/zurich/1/7.png"}, {name:'8', path:"./imgs/code/zurich/1/8.png"},
+		{name:'9', path:"./imgs/code/zurich/1/9.png"}, {name:'10', path:"./imgs/code/zurich/1/10.png"}, {name:'11', path:"./imgs/code/zurich/1/11.png"},
+		{name:'12', path:"./imgs/code/zurich/1/12.png"}, {name:'13', path:"./imgs/code/zurich/1/13.png"}, {name:'14', path:"./imgs/code/zurich/1/14.png"},
+		{name:'15', path:"./imgs/code/zurich/1/15.png"}, {name:'16', path:"./imgs/code/zurich/1/16.png"}, {name:'17', path:"./imgs/code/zurich/1/17.png"},
+		{name:'18', path:"./imgs/code/zurich/1/18.png"}, {name:'19', path:"./imgs/code/zurich/1/19.png"}, {name:'20', path:"./imgs/code/zurich/1/20.png"}
+	),
+	imgDataCode22 = new Array(
+		{name:'0', path:"./imgs/code/zurich/2/0.png"}, {name:'1', path:"./imgs/code/zurich/2/1.png"}, {name:'2', path:"./imgs/code/zurich/2/2.png"},
+		{name:'3', path:"./imgs/code/zurich/2/3.png"}, {name:'4', path:"./imgs/code/zurich/2/4.png"}, {name:'5', path:"./imgs/code/zurich/2/5.png"},
+		{name:'6', path:"./imgs/code/zurich/2/6.png"}, {name:'7', path:"./imgs/code/zurich/2/7.png"}, {name:'8', path:"./imgs/code/zurich/2/8.png"},
+		{name:'9', path:"./imgs/code/zurich/2/9.png"}, {name:'10', path:"./imgs/code/zurich/2/10.png"}, {name:'11', path:"./imgs/code/zurich/2/11.png"},
+		{name:'12', path:"./imgs/code/zurich/2/12.png"}, {name:'13', path:"./imgs/code/zurich/2/13.png"}, {name:'14', path:"./imgs/code/zurich/2/14.png"},
+		{name:'15', path:"./imgs/code/zurich/2/15.png"}, {name:'16', path:"./imgs/code/zurich/2/16.png"}, {name:'17', path:"./imgs/code/zurich/2/17.png"},
+		{name:'18', path:"./imgs/code/zurich/2/18.png"}
+	),
+	imgDataCode23 = new Array(
+		{name:'0', path:"./imgs/code/zurich/3/0.png"}, {name:'1', path:"./imgs/code/zurich/3/1.png"}, {name:'2', path:"./imgs/code/zurich/3/2.png"},
+		{name:'3', path:"./imgs/code/zurich/3/3.png"}, {name:'4', path:"./imgs/code/zurich/3/4.png"}, {name:'5', path:"./imgs/code/zurich/3/5.png"},
+		{name:'6', path:"./imgs/code/zurich/3/6.png"}, {name:'7', path:"./imgs/code/zurich/3/7.png"}, {name:'8', path:"./imgs/code/zurich/3/8.png"},
+		{name:'9', path:"./imgs/code/zurich/3/9.png"}, {name:'10', path:"./imgs/code/zurich/3/10.png"}, {name:'11', path:"./imgs/code/zurich/3/11.png"},
+		{name:'12', path:"./imgs/code/zurich/3/12.png"}, {name:'13', path:"./imgs/code/zurich/3/13.png"}, {name:'14', path:"./imgs/code/zurich/3/14.png"},
+		{name:'15', path:"./imgs/code/zurich/3/15.png"}, {name:'16', path:"./imgs/code/zurich/3/16.png"}, {name:'17', path:"./imgs/code/zurich/3/17.png"},
+		{name:'18', path:"./imgs/code/zurich/3/18.png"}, {name:'19', path:"./imgs/code/zurich/3/19.png"}
 	);
 	
 function main(){
@@ -309,66 +435,67 @@ function main(){
 	
 	//游戏逐层初始化
 	backLayer = new LSprite();
-	backLayer.graphics.drawRect(1, "#ffffff", [0, 0, window.innerWidth, window.innerHeight], true, "#ffffff");
 	addChild(backLayer);
 	
+	//树层
+	treeLayer = new LSprite();
+	addChild(treeLayer);
+	
+	//钮扣层
+	codeLayer = new LSprite();
+	addChild(codeLayer);
+		
 	LLoadManage.load(imgData, function(progress){}, bInit);
 };
 function bInit(result){
 	imgList = result;
 	
 	//背景图片显示
-	var loadBg = new LBitmap(new LBitmapData(imgList["bg_1"]));
-	backLayer.addChild(loadBg);
-		
-	LLoadManage.load(imgDataLondon12, function(progress){}, bLondon12);
-	LLoadManage.load(imgDataLondon15, function(progress){}, bLondon15);
-	LLoadManage.load(imgDataLondon23, function(progress){}, bLondon23);
-	LLoadManage.load(imgDataLondon25, function(progress){}, bLondon25);
-	LLoadManage.load(imgDataLondon34, function(progress){}, bLondon34);
-	LLoadManage.load(imgDataLondon35, function(progress){}, bLondon35);
-	LLoadManage.load(imgDataLondon45, function(progress){}, bLondon45);
+	background = new LBitmap(new LBitmapData(imgList["bg_1"]));
+	backLayer.addChild(background);
 	
-	LLoadManage.load(imgDataMilan12, function(progress){}, bMilan12);
-	LLoadManage.load(imgDataMilan15, function(progress){}, bMilan15);
-	LLoadManage.load(imgDataMilan23, function(progress){}, bMilan23);
-	LLoadManage.load(imgDataMilan25, function(progress){}, bMilan25);
-	LLoadManage.load(imgDataMilan34, function(progress){}, bMilan34);
-	LLoadManage.load(imgDataMilan35, function(progress){}, bMilan35);
-	LLoadManage.load(imgDataMilan45, function(progress){}, bMilan45);
 	
-	LLoadManage.load(imgDataZurich12, function(progress){}, bZurich12);
-	LLoadManage.load(imgDataZurich15, function(progress){}, bZurich15);
-	LLoadManage.load(imgDataZurich23, function(progress){}, bZurich23);
-	LLoadManage.load(imgDataZurich25, function(progress){}, bZurich25);
-	LLoadManage.load(imgDataZurich34, function(progress){}, bZurich34);
-	LLoadManage.load(imgDataZurich35, function(progress){}, bZurich35);
-	LLoadManage.load(imgDataZurich45, function(progress){}, bZurich45);
+	LLoadManage.load(imgDataCode01, function(progress){}, function(result){ imgCode01 = result; });
+	LLoadManage.load(imgDataCode02, function(progress){}, function(result){ imgCode02 = result; });
+	LLoadManage.load(imgDataCode03, function(progress){}, function(result){ imgCode03 = result; });
+	
+	LLoadManage.load(imgDataLondon12, function(progress){}, function(result){ imgLondon12 = result; });
+	LLoadManage.load(imgDataLondon15, function(progress){}, function(result){ imgLondon15 = result; });
+	LLoadManage.load(imgDataLondon23, function(progress){}, function(result){ imgLondon23 = result; });
+	LLoadManage.load(imgDataLondon25, function(progress){}, function(result){ imgLondon25 = result; });
+	LLoadManage.load(imgDataLondon34, function(progress){}, function(result){ imgLondon34 = result; });
+	LLoadManage.load(imgDataLondon35, function(progress){}, function(result){ imgLondon35 = result; });
+	LLoadManage.load(imgDataLondon45, function(progress){}, loadCity);
 };
 
-function bLondon12(result){ imgLondon12 = result; };
-function bLondon15(result){ imgLondon15 = result; };
-function bLondon23(result){ imgLondon23 = result; };
-function bLondon25(result){ imgLondon25 = result; };
-function bLondon34(result){ imgLondon34 = result; };
-function bLondon35(result){ imgLondon35 = result; };
-function bLondon45(result){ imgLondon45 = result; };
+function loadCity(result){
+	imgLondon45 = result;
+	
+	LLoadManage.load(imgDataCode11, function(progress){}, function(result){ imgCode11 = result; });
+	LLoadManage.load(imgDataCode12, function(progress){}, function(result){ imgCode12 = result; });
+	LLoadManage.load(imgDataCode13, function(progress){}, function(result){ imgCode13 = result; });
+	
+	LLoadManage.load(imgDataMilan12, function(progress){}, function(result){ imgMilan12 = result; });
+	LLoadManage.load(imgDataMilan15, function(progress){}, function(result){ imgMilan15 = result; });
+	LLoadManage.load(imgDataMilan23, function(progress){}, function(result){ imgMilan23 = result; });
+	LLoadManage.load(imgDataMilan25, function(progress){}, function(result){ imgMilan25 = result; });
+	LLoadManage.load(imgDataMilan34, function(progress){}, function(result){ imgMilan34 = result; });
+	LLoadManage.load(imgDataMilan35, function(progress){}, function(result){ imgMilan35 = result; });
+	LLoadManage.load(imgDataMilan45, function(progress){}, function(result){ imgMilan45 = result; });
+	
+	LLoadManage.load(imgDataCode21, function(progress){}, function(result){ imgCode21 = result; });
+	LLoadManage.load(imgDataCode22, function(progress){}, function(result){ imgCode22 = result; });
+	LLoadManage.load(imgDataCode23, function(progress){}, function(result){ imgCode23 = result; });
+	
+	LLoadManage.load(imgDataZurich12, function(progress){}, function(result){ imgZurich12 = result; });
+	LLoadManage.load(imgDataZurich15, function(progress){}, function(result){ imgZurich15 = result; });
+	LLoadManage.load(imgDataZurich23, function(progress){}, function(result){ imgZurich23 = result; });
+	LLoadManage.load(imgDataZurich25, function(progress){}, function(result){ imgZurich25 = result; });
+	LLoadManage.load(imgDataZurich34, function(progress){}, function(result){ imgZurich34 = result; });
+	LLoadManage.load(imgDataZurich35, function(progress){}, function(result){ imgZurich35 = result; });
+	LLoadManage.load(imgDataZurich45, function(progress){}, function(result){ imgZurich45 = result; });
+};
 
-function bMilan12(result){ imgMilan12 = result; };
-function bMilan15(result){ imgMilan15 = result; };
-function bMilan23(result){ imgMilan23 = result; };
-function bMilan25(result){ imgMilan25 = result; };
-function bMilan34(result){ imgMilan34 = result; };
-function bMilan35(result){ imgMilan35 = result; };
-function bMilan45(result){ imgMilan45 = result; };
-
-function bZurich12(result){ imgZurich12 = result; };
-function bZurich15(result){ imgZurich15 = result; };
-function bZurich23(result){ imgZurich23 = result; };
-function bZurich25(result){ imgZurich25 = result; };
-function bZurich34(result){ imgZurich34 = result; };
-function bZurich35(result){ imgZurich35 = result; };
-function bZurich45(result){ imgZurich45 = result; };
 
 function step_1(){
 	$('.slogan, .btnStart, .btnLink').addClass('run');
@@ -386,18 +513,38 @@ function step_2(){
 		backLayer.removeAllChild();
 		
 		//城市 London
-		var loadBg = new LBitmap(new LBitmapData(imgLondon12["0"]));
-		backLayer.addChild(loadBg);
+		background = new LBitmap(new LBitmapData(imgLondon12["0"]));
+		backLayer.addChild(background);
+		
+		codeList = imgCode01;
+		codeLayer.addEventListener(LEvent.ENTER_FRAME, onCodeFrame);		
 		
 		$('.cityForm').addClass('run').data('val', '伦敦');
 		city = 0;
 		run = 1;
 		
+		LLoadManage.load(imgDataTree4, function(progress){}, function(result){ imgTree4 = result; });
+		LLoadManage.load(imgDataTree5, function(progress){}, function(result){ imgTree5 = result; });
+		LLoadManage.load(imgDataTree15, function(progress){}, function(result){ imgTree15 = result; });
+		LLoadManage.load(imgDataTree25, function(progress){}, function(result){ imgTree25 = result; });
+		LLoadManage.load(imgDataTree34, function(progress){}, function(result){ imgTree34 = result; });
+		LLoadManage.load(imgDataTree35, function(progress){}, function(result){ imgTree35 = result; });
+		LLoadManage.load(imgDataTree45, function(progress){}, function(result){ imgTree45 = result; });
+		
 	}, 300);
 	
 }
 
+
 function cityRun(){
+	codeList = {}, treeList = {};
+	codeLayer.die(), treeLayer.die();
+	codeLayer.removeAllChild(), treeLayer.removeAllChild();
+	
+	play = 0;
+	code = 0;
+	tree = 0;
+	
 	if(run == 1 || run == 3 || run == 5 || run == 7){
 		$('button span','.cityForm').removeAttr('class').addClass('run' + (run-1) / 2);
 	}
@@ -407,15 +554,21 @@ function cityRun(){
 		$('input','.cityForm').val('');
 		cityEnd();
 		run = 0;
+		
+		treeList = imgTree5;
+		if(city == 1 && treeList.length > 0){
+			treeLayer.addEventListener(LEvent.ENTER_FRAME, onTreeFrame);
+		};
+		
 		return false;
 	}
 	
-	play = 0;
 	if(city == 0){
 		switch (run){
 			case 1:
 				length = imgLondon12.length;
 				playList = imgLondon12;
+				codeList = imgCode02;
 				run = 3;
 			break;
 			case 2:
@@ -427,6 +580,7 @@ function cityRun(){
 			case 3:
 				length = imgLondon23.length;
 				playList = imgLondon23;
+				codeList = imgCode03;
 				run = 5;
 			break;
 			case 4:
@@ -451,46 +605,67 @@ function cityRun(){
 				playList = imgLondon45;
 				run = 8;
 			break;
+			case 9:
+				length = imgLondon45.length;
+				playList = imgLondon45;
+				run = 0;
+				score += 2;
+			break;
 		}
 	}else if(city == 1){
 		switch (run){
 			case 1:
 				length = imgMilan12.length;
 				playList = imgMilan12;
+				codeList = imgCode12;
 				run = 3;
 			break;
 			case 2:
 				length = imgMilan15.length;
 				playList = imgMilan15;
+				treeList = imgTree15;
 				run = 0;
 				score += 5;
 			break;
 			case 3:
 				length = imgMilan23.length;
 				playList = imgMilan23;
+				codeList = imgCode13;
 				run = 5;
 			break;
 			case 4:
 				length = imgMilan25.length;
 				playList = imgMilan25;
+				treeList = imgTree25;
 				run = 0;
 				score += 4;
 			break;
 			case 5:
 				length = imgMilan34.length;
 				playList = imgMilan34;
+				treeList = imgTree34;
 				run = 7;
 			break;
 			case 6:
 				length = imgMilan35.length;
 				playList = imgMilan35;
+				treeList = imgTree35;
 				run = 0;
 				score += 3;
 			break;
 			case 7:
 				length = imgMilan45.length;
 				playList = imgMilan45;
+				treeList = imgTree45;
 				run = 8;
+				treeLayer.die();
+			break;
+			case 9:
+				length = imgMilan45.length;
+				playList = imgMilan45;
+				treeList = imgTree45;
+				run = 0;
+				score += 2;
 			break;
 		}
 	}else if(city == 2){
@@ -498,6 +673,7 @@ function cityRun(){
 			case 1:
 				length = imgZurich12.length;
 				playList = imgZurich12;
+				codeList = imgCode22;
 				run = 3;
 			break;
 			case 2:
@@ -509,6 +685,7 @@ function cityRun(){
 			case 3:
 				length = imgZurich23.length;
 				playList = imgZurich23;
+				codeList = imgCode23;
 				run = 5;
 			break;
 			case 4:
@@ -533,33 +710,91 @@ function cityRun(){
 				playList = imgZurich45;
 				run = 8;
 			break;
+			case 9:
+				length = imgZurich45.length;
+				playList = imgZurich45;
+				run = 0;
+				score += 2;
+			break;
 		}
 	}
 	
 	backLayer.addEventListener(LEvent.ENTER_FRAME, onFrame);
-}
+};
 function onFrame(){
 	
 	backLayer.removeAllChild();
 	
 	//城市 London
-	var loadBg = new LBitmap(new LBitmapData(playList[String(play)]));
-	
-	
-	backLayer.addChild(loadBg);
+	background = new LBitmap(new LBitmapData(playList[String(play)]));
+	backLayer.addChild(background);
 	
 	play ++;
 	if(play >= length){
 		backLayer.die();
+		
+		if(city == 1 && treeList.length > 0){
+			treeLayer.addEventListener(LEvent.ENTER_FRAME, onTreeFrame);
+		};
+		
+		if(codeList.length > 0){
+			codeLayer.addEventListener(LEvent.ENTER_FRAME, onCodeFrame);
+		};
+		
 		$('input','.cityForm').val('');
 		
 		if(run == 0){
 			cityEnd();
 		}
 	};
-}
+};
+
+function onTreeFrame(){
+	treeLayer.removeAllChild();
+	
+	treeBg = new LBitmap(new LBitmapData(treeList[String(tree)]));
+	treeLayer.addChild(treeBg);
+	tree++;
+	
+	if(tree >= treeList.length){
+		treeLayer.die();
+		
+		if(run == 0 || run == 8){
+			treeList = imgTree5;
+			treeLayer.addEventListener(LEvent.ENTER_FRAME, onTreeRunFrame);
+		}
+		if(run == 7){
+			treeList = imgTree4;
+			treeLayer.addEventListener(LEvent.ENTER_FRAME, onTreeRunFrame);
+		}
+		
+		tree = 0;
+	}
+};
+
+function onTreeRunFrame(){
+	treeLayer.removeAllChild();
+	
+	treeBg = new LBitmap(new LBitmapData(treeList[String(tree)]));
+	treeLayer.addChild(treeBg);
+	tree++;
+	if(tree >= treeList.length){
+		tree = 0;
+	}
+};
+
+function onCodeFrame(){
+	codeLayer.removeAllChild();
+	
+	codeBg = new LBitmap(new LBitmapData(codeList[String(code)]));
+	codeLayer.addChild(codeBg);
+	code++;
+	if(code >= codeList.length){
+		code = 0;
+	}
+};
+
 function cityEnd(){
-	console.log(score);
 	$('.cityForm').removeClass('run');
 	var obj;
 	if(city==0){
@@ -586,7 +821,6 @@ function cityEnd(){
 };
 
 function changeCity(){
-	var loadBg;
 	score = 0;
 	run = 1;
 	$('button span', '.cityForm').removeAttr('class');
@@ -594,24 +828,29 @@ function changeCity(){
 		$('.cityLondon').css('z-index', 0).children().fadeOut(300);
 		
 		//城市 Milan
-		loadBg = new LBitmap(new LBitmapData(imgMilan12["0"]));
+		background = new LBitmap(new LBitmapData(imgMilan12["0"]));
 		$('.cityForm').addClass('run').data('val', '米兰');
+		
+		codeList = imgCode11;
+		codeLayer.addEventListener(LEvent.ENTER_FRAME, onCodeFrame);
 		
 		city = 1;
 	}else if(city==1){
 		$('.cityMilan').css('z-index', 0).children().fadeOut(300);
 		
 		//城市 Milan
-		var loadBg = new LBitmap(new LBitmapData(imgZurich12["0"]));
-		backLayer.addChild(loadBg);
-		
+		background = new LBitmap(new LBitmapData(imgZurich12["0"]));
 		$('.cityForm').addClass('run').data('val', '苏黎世');
+		
+		codeList = imgCode21;
+		codeLayer.addEventListener(LEvent.ENTER_FRAME, onCodeFrame);
 		
 		city = 2;
 	}else if(city==2){
 		$('.cityZurich').css('z-index', 0).children().fadeOut(300);
 		
-		loadBg = new LBitmap(new LBitmapData(imgList["bg_2"]));
+		background = new LBitmap(new LBitmapData(imgList["bg_2"]));
+		
 		city = 3;
 	}else{
 		return false;
@@ -620,7 +859,11 @@ function changeCity(){
 	//背景层清空
 	backLayer.die();
 	backLayer.removeAllChild();
-	backLayer.addChild(loadBg);
+	backLayer.addChild(background);
+	
+	//树层清空
+	treeLayer.die();
+	treeLayer.removeAllChild();
 	
 	if(city == 3){
 		$('.score').find('strong').html(scoreAll);
@@ -696,6 +939,9 @@ $(function(){
 					break;
 				case 5:
 					run = 6;
+					break;
+				case 7:
+					run = 9;
 					break;
 				case 8:
 					score += 1;
