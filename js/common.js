@@ -448,11 +448,7 @@ function bInit(result){
 	LLoadManage.load(imgDataLondon34, function(progress){}, function(result){ imgLondon34 = result; });
 	LLoadManage.load(imgDataLondon35, function(progress){}, function(result){ imgLondon35 = result; });
 	LLoadManage.load(imgDataLondon45, function(progress){}, loadCity);
-};
-
-function loadCity(result){
-	imgLondon45 = result;
-	
+		
 	LLoadManage.load(imgDataCode11, function(progress){}, function(result){ imgCode11 = result; });
 	LLoadManage.load(imgDataCode12, function(progress){}, function(result){ imgCode12 = result; });
 	LLoadManage.load(imgDataCode13, function(progress){}, function(result){ imgCode13 = result; });
@@ -464,6 +460,11 @@ function loadCity(result){
 	LLoadManage.load(imgDataMilan34, function(progress){}, function(result){ imgMilan34 = result; });
 	LLoadManage.load(imgDataMilan35, function(progress){}, function(result){ imgMilan35 = result; });
 	LLoadManage.load(imgDataMilan45, function(progress){}, function(result){ imgMilan45 = result; });
+	
+};
+
+function loadCity(result){
+	imgLondon45 = result;	
 	
 	LLoadManage.load(imgDataCode21, function(progress){}, function(result){ imgCode21 = result; });
 	LLoadManage.load(imgDataCode22, function(progress){}, function(result){ imgCode22 = result; });
@@ -526,6 +527,8 @@ function cityRun(){
 	play = 0;
 	code = 0;
 	tree = 0;
+	
+	LGlobal.setFrameRate(60);
 	
 	if(run == 1 || run == 3 || run == 5 || run == 7){
 		$('button span','.cityForm').removeAttr('class').addClass('run' + (run-1) / 2);
@@ -766,6 +769,7 @@ function onTreeRunFrame(){
 };
 
 function onCodeFrame(){
+	LGlobal.setFrameRate(150);
 	codeLayer.removeAllChild();
 	
 	codeBg = new LBitmap(new LBitmapData(codeList[String(code)]));
@@ -883,7 +887,15 @@ $(function(){
 		"city/london/15/0.jpg", "city/london/15/1.jpg", "city/london/15/2.jpg", "city/london/15/3.jpg", "city/london/15/4.jpg", "city/london/15/5.jpg",
 		"city/london/15/6.jpg", "city/london/15/7.jpg", "city/london/15/8.jpg", "city/london/15/9.jpg", "city/london/15/10.jpg", "city/london/15/11.jpg",
 		"city/london/23/0.jpg", "city/london/23/1.jpg", "city/london/23/2.jpg", "city/london/23/3.jpg", "city/london/23/4.jpg", "city/london/23/5.jpg",
-		"city/london/23/6.jpg", "city/london/23/7.jpg", "city/london/23/8.jpg", "city/london/23/9.jpg", "city/london/23/10.jpg", "city/london/23/11.jpg"
+		"city/london/23/6.jpg", "city/london/23/7.jpg", "city/london/23/8.jpg", "city/london/23/9.jpg", "city/london/23/10.jpg", "city/london/23/11.jpg",
+		"city/london/25/0.jpg", "city/london/25/1.jpg", "city/london/25/2.jpg", "city/london/25/3.jpg", "city/london/25/4.jpg", "city/london/25/5.jpg",
+		"city/london/25/6.jpg", "city/london/25/7.jpg", "city/london/25/8.jpg", "city/london/25/9.jpg", "city/london/25/10.jpg", "city/london/25/11.jpg",
+		"city/london/34/0.jpg", "city/london/34/1.jpg", "city/london/34/2.jpg", "city/london/34/3.jpg", "city/london/34/4.jpg", "city/london/34/5.jpg",
+		"city/london/34/6.jpg", "city/london/34/7.jpg", "city/london/34/8.jpg", "city/london/34/9.jpg", "city/london/34/10.jpg", "city/london/34/11.jpg",
+		"city/london/35/0.jpg", "city/london/35/1.jpg", "city/london/35/2.jpg", "city/london/35/3.jpg", "city/london/35/4.jpg", "city/london/35/5.jpg",
+		"city/london/35/6.jpg", "city/london/35/7.jpg", "city/london/35/8.jpg", "city/london/35/9.jpg", "city/london/35/10.jpg", "city/london/35/11.jpg",
+		"city/london/45/0.jpg", "city/london/45/1.jpg", "city/london/45/2.jpg", "city/london/45/3.jpg", "city/london/45/4.jpg", "city/london/45/5.jpg",
+		"city/london/45/6.jpg", "city/london/45/7.jpg", "city/london/45/8.jpg", "city/london/45/9.jpg", "city/london/45/10.jpg"
 	];
 
 	$.preloadimg(imgs, function(){
