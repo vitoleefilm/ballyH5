@@ -15,17 +15,7 @@
 			type: "POST",
 			dataType: "html",
 			success: function(data){
-				$.fancybox && $.fancybox.hideLoading();
-				window.G_hideLoading && window.G_hideLoading();
-				if(data == 'NEED_LOGIN'){
-					if(top.location == self.location){
-						location.reload();
-					}else{
-						parent.location.reload();
-					};
-				}else{
-					callback && callback(data);
-				};
+				callback && callback(data);
 			}
 		});
 	};
@@ -41,7 +31,7 @@ $('.btnSubmit').click(function(){
 	var score 			= $('.score').find('strong').html();
 	var play_time 		= $('.giftForm').find('.play_time').val();
 	$this.addClass('ajaxed');
-	$.post('./save_info.php',{
+	$.post('save_info.php',{
 		user_name:user_name,
 		mobile_number:mobile_number,
 		wechat_name:wechat_name,
@@ -53,6 +43,7 @@ $('.btnSubmit').click(function(){
 			$('.giftForm').fadeOut(300);
 			$('.shareTip').addClass('run');
 			$('.shareBox').show().animate({opacity:1, top:0}, 500);
+			$this.removeClass('ajaxed');
 		}
 	});
 });
