@@ -350,19 +350,13 @@ var backLayer, background, treeLayer, treeBg, codeLayer, codeBg,
 		{name:'0', path:"./imgs/code/london/1/0.png"}, {name:'1', path:"./imgs/code/london/1/1.png"}, {name:'2', path:"./imgs/code/london/1/2.png"},
 		{name:'3', path:"./imgs/code/london/1/3.png"}, {name:'4', path:"./imgs/code/london/1/4.png"}, {name:'5', path:"./imgs/code/london/1/5.png"},
 		{name:'6', path:"./imgs/code/london/1/6.png"}, {name:'7', path:"./imgs/code/london/1/7.png"}, {name:'8', path:"./imgs/code/london/1/8.png"},
-		{name:'9', path:"./imgs/code/london/1/9.png"}, {name:'10', path:"./imgs/code/london/1/10.png"}, {name:'11', path:"./imgs/code/london/1/11.png"},
-		{name:'12', path:"./imgs/code/london/1/12.png"}, {name:'13', path:"./imgs/code/london/1/13.png"}, {name:'14', path:"./imgs/code/london/1/14.png"},
-		{name:'15', path:"./imgs/code/london/1/15.png"}, {name:'16', path:"./imgs/code/london/1/16.png"}, {name:'17', path:"./imgs/code/london/1/17.png"},
-		{name:'18', path:"./imgs/code/london/1/18.png"}, {name:'19', path:"./imgs/code/london/1/19.png"}
+		{name:'9', path:"./imgs/code/london/1/9.png"}
 	),
 	imgDataCode02 = new Array(
 		{name:'0', path:"./imgs/code/london/2/0.png"}, {name:'1', path:"./imgs/code/london/2/1.png"}, {name:'2', path:"./imgs/code/london/2/2.png"},
 		{name:'3', path:"./imgs/code/london/2/3.png"}, {name:'4', path:"./imgs/code/london/2/4.png"}, {name:'5', path:"./imgs/code/london/2/5.png"},
 		{name:'6', path:"./imgs/code/london/2/6.png"}, {name:'7', path:"./imgs/code/london/2/7.png"}, {name:'8', path:"./imgs/code/london/2/8.png"},
-		{name:'9', path:"./imgs/code/london/2/9.png"}, {name:'10', path:"./imgs/code/london/2/10.png"}, {name:'11', path:"./imgs/code/london/2/11.png"},
-		{name:'12', path:"./imgs/code/london/2/12.png"}, {name:'13', path:"./imgs/code/london/2/13.png"}, {name:'14', path:"./imgs/code/london/2/14.png"},
-		{name:'15', path:"./imgs/code/london/2/15.png"}, {name:'16', path:"./imgs/code/london/2/16.png"}, {name:'17', path:"./imgs/code/london/2/17.png"},
-		{name:'18', path:"./imgs/code/london/2/18.png"}, {name:'19', path:"./imgs/code/london/2/19.png"}
+		{name:'9', path:"./imgs/code/london/2/9.png"}
 	),
 	imgDataCode03 = new Array(
 		{name:'0', path:"./imgs/code/london/3/0.png"}, {name:'1', path:"./imgs/code/london/3/1.png"}, {name:'2', path:"./imgs/code/london/3/2.png"},
@@ -375,19 +369,13 @@ var backLayer, background, treeLayer, treeBg, codeLayer, codeBg,
 		{name:'0', path:"./imgs/code/milan/1/0.png"}, {name:'1', path:"./imgs/code/milan/1/1.png"}, {name:'2', path:"./imgs/code/milan/1/2.png"},
 		{name:'3', path:"./imgs/code/milan/1/3.png"}, {name:'4', path:"./imgs/code/milan/1/4.png"}, {name:'5', path:"./imgs/code/milan/1/5.png"},
 		{name:'6', path:"./imgs/code/milan/1/6.png"}, {name:'7', path:"./imgs/code/milan/1/7.png"}, {name:'8', path:"./imgs/code/milan/1/8.png"},
-		{name:'9', path:"./imgs/code/milan/1/9.png"}, {name:'10', path:"./imgs/code/milan/1/10.png"}, {name:'11', path:"./imgs/code/milan/1/11.png"},
-		{name:'12', path:"./imgs/code/milan/1/12.png"}, {name:'13', path:"./imgs/code/milan/1/13.png"}, {name:'14', path:"./imgs/code/milan/1/14.png"},
-		{name:'15', path:"./imgs/code/milan/1/15.png"}, {name:'16', path:"./imgs/code/milan/1/16.png"}, {name:'17', path:"./imgs/code/milan/1/17.png"},
-		{name:'18', path:"./imgs/code/milan/1/18.png"}, {name:'19', path:"./imgs/code/milan/1/19.png"}
+		{name:'9', path:"./imgs/code/milan/1/9.png"}
 	),
 	imgDataCode12 = new Array(
 		{name:'0', path:"./imgs/code/milan/2/0.png"}, {name:'1', path:"./imgs/code/milan/2/1.png"}, {name:'2', path:"./imgs/code/milan/2/2.png"},
 		{name:'3', path:"./imgs/code/milan/2/3.png"}, {name:'4', path:"./imgs/code/milan/2/4.png"}, {name:'5', path:"./imgs/code/milan/2/5.png"},
 		{name:'6', path:"./imgs/code/milan/2/6.png"}, {name:'7', path:"./imgs/code/milan/2/7.png"}, {name:'8', path:"./imgs/code/milan/2/8.png"},
-		{name:'9', path:"./imgs/code/milan/2/9.png"}, {name:'10', path:"./imgs/code/milan/2/10.png"}, {name:'11', path:"./imgs/code/milan/2/11.png"},
-		{name:'12', path:"./imgs/code/milan/2/12.png"}, {name:'13', path:"./imgs/code/milan/2/13.png"}, {name:'14', path:"./imgs/code/milan/2/14.png"},
-		{name:'15', path:"./imgs/code/milan/2/15.png"}, {name:'16', path:"./imgs/code/milan/2/16.png"}, {name:'17', path:"./imgs/code/milan/2/17.png"},
-		{name:'18', path:"./imgs/code/milan/2/18.png"}, {name:'19', path:"./imgs/code/milan/2/19.png"}
+		{name:'9', path:"./imgs/code/milan/2/9.png"}
 	),
 	imgDataCode13 = new Array(
 		{name:'0', path:"./imgs/code/milan/3/0.png"}, {name:'1', path:"./imgs/code/milan/3/1.png"}, {name:'2', path:"./imgs/code/milan/3/2.png"},
@@ -403,19 +391,13 @@ var backLayer, background, treeLayer, treeBg, codeLayer, codeBg,
 		{name:'0', path:"./imgs/code/zurich/1/0.png"}, {name:'1', path:"./imgs/code/zurich/1/1.png"}, {name:'2', path:"./imgs/code/zurich/1/2.png"},
 		{name:'3', path:"./imgs/code/zurich/1/3.png"}, {name:'4', path:"./imgs/code/zurich/1/4.png"}, {name:'5', path:"./imgs/code/zurich/1/5.png"},
 		{name:'6', path:"./imgs/code/zurich/1/6.png"}, {name:'7', path:"./imgs/code/zurich/1/7.png"}, {name:'8', path:"./imgs/code/zurich/1/8.png"},
-		{name:'9', path:"./imgs/code/zurich/1/9.png"}, {name:'10', path:"./imgs/code/zurich/1/10.png"}, {name:'11', path:"./imgs/code/zurich/1/11.png"},
-		{name:'12', path:"./imgs/code/zurich/1/12.png"}, {name:'13', path:"./imgs/code/zurich/1/13.png"}, {name:'14', path:"./imgs/code/zurich/1/14.png"},
-		{name:'15', path:"./imgs/code/zurich/1/15.png"}, {name:'16', path:"./imgs/code/zurich/1/16.png"}, {name:'17', path:"./imgs/code/zurich/1/17.png"},
-		{name:'18', path:"./imgs/code/zurich/1/18.png"}, {name:'19', path:"./imgs/code/zurich/1/19.png"}, {name:'20', path:"./imgs/code/zurich/1/20.png"}
+		{name:'9', path:"./imgs/code/zurich/1/9.png"}
 	),
 	imgDataCode22 = new Array(
 		{name:'0', path:"./imgs/code/zurich/2/0.png"}, {name:'1', path:"./imgs/code/zurich/2/1.png"}, {name:'2', path:"./imgs/code/zurich/2/2.png"},
 		{name:'3', path:"./imgs/code/zurich/2/3.png"}, {name:'4', path:"./imgs/code/zurich/2/4.png"}, {name:'5', path:"./imgs/code/zurich/2/5.png"},
 		{name:'6', path:"./imgs/code/zurich/2/6.png"}, {name:'7', path:"./imgs/code/zurich/2/7.png"}, {name:'8', path:"./imgs/code/zurich/2/8.png"},
-		{name:'9', path:"./imgs/code/zurich/2/9.png"}, {name:'10', path:"./imgs/code/zurich/2/10.png"}, {name:'11', path:"./imgs/code/zurich/2/11.png"},
-		{name:'12', path:"./imgs/code/zurich/2/12.png"}, {name:'13', path:"./imgs/code/zurich/2/13.png"}, {name:'14', path:"./imgs/code/zurich/2/14.png"},
-		{name:'15', path:"./imgs/code/zurich/2/15.png"}, {name:'16', path:"./imgs/code/zurich/2/16.png"}, {name:'17', path:"./imgs/code/zurich/2/17.png"},
-		{name:'18', path:"./imgs/code/zurich/2/18.png"}
+		{name:'9', path:"./imgs/code/zurich/2/9.png"}
 	),
 	imgDataCode23 = new Array(
 		{name:'0', path:"./imgs/code/zurich/3/0.png"}, {name:'1', path:"./imgs/code/zurich/3/1.png"}, {name:'2', path:"./imgs/code/zurich/3/2.png"},
