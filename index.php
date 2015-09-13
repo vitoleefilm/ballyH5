@@ -154,10 +154,10 @@ require_once "weixin.php";
 		</audio>
 	</section>-->
 	<script type="text/javascript">
-		/*appId 		= '<?php echo $signPackage["appId"];?>',
-        timestamp 	= <?php echo $signPackage["timestamp"];?>,
-        nonceStr 	= '<?php echo $signPackage["nonceStr"];?>',
-        signature 	= '<?php echo $signPackage["signature"];?>',
+		/*appId 		= '<?php echo $signPackage["appId"];?>';
+        timestamp 	= <?php echo $signPackage["timestamp"];?>;
+        nonceStr 	= '<?php echo $signPackage["nonceStr"];?>';
+        signature 	= '<?php echo $signPackage["signature"];?>';
         */
 	</script>
 	
