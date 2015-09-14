@@ -1,7 +1,7 @@
 <?php
 require_once "weixin.php";
-// $jssdk = new WEIXIN("wxa7f65d2ea613627a", "38b39a59114fbafee8b70c6d673a52b7");
-// $signPackage = $jssdk->GetSignPackage();
+$jssdk = new WEIXIN("wxa7f65d2ea613627a", "38b39a59114fbafee8b70c6d673a52b7");
+$signPackage = $jssdk->GetSignPackage();
 ?><!doctype html>
 <html>
 <head>
@@ -154,11 +154,11 @@ require_once "weixin.php";
 		</audio>
 	</section>-->
 	<script type="text/javascript">
-		/*appId 		= '<?php echo $signPackage["appId"];?>';
+		appId 		= '<?php echo $signPackage["appId"];?>';
         timestamp 	= <?php echo $signPackage["timestamp"];?>;
         nonceStr 	= '<?php echo $signPackage["nonceStr"];?>';
         signature 	= '<?php echo $signPackage["signature"];?>';
-        */
+        
 	</script>
 	
 	<script src="js/jquery-2.1.3.min.js"></script>

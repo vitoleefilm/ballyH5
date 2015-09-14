@@ -27,7 +27,7 @@ class WEIXIN {
       "signature" => $signature,
       "rawString" => $string
     );
-    return $signPackage; 
+    return $signPackage;
   }
 
   private function createNonceStr($length = 16) {

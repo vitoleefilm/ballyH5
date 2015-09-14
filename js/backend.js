@@ -52,40 +52,41 @@ function isWeixinBrowser(){
     var ua = navigator.userAgent.toLowerCase();
     return (/micromessenger/.test(ua)) ? true : false ;
 }
-// if (isWeixinBrowser()) {
-// 	wx.config({
-// 	    appId: appId,
-// 	    timestamp: timestamp,
-// 	    nonceStr: nonceStr,
-// 	    signature: signature,
-// 	    jsApiList: [
-// 	        'onMenuShareTimeline','onMenuShareAppMessage'
-// 	    ]
-// 	});
+if (isWeixinBrowser()) {
+	wx.config({
+		debug: true,
+	    appId: appId,
+	    timestamp: timestamp,
+	    nonceStr: nonceStr,
+	    signature: signature,
+	    jsApiList: [
+	        'onMenuShareTimeline','onMenuShareAppMessage'
+	    ]
+	});
 
-// 	wx.ready(function () {
-// 	    wx.onMenuShareTimeline({
-// 	        title: ' LACOSTE互动【产品型录】中更有型男演绎LT12限量系列！速来围观！', // 分享标题
-// 	        link: 'http://www.lt12.cn/lookbook/index.php', // 分享链接
-// 	        imgUrl: 'http://www.lt12.cn/lookbook/images/share/lookbooksharepic.jpg', // 分享图标
-// 	        success: function () {
-// 	        },
-// 	        cancel: function () {
-// 	        }
-// 	    });
-// 	    wx.onMenuShareAppMessage({
-// 	        title: 'LACOSTE互动【产品型录】中更有型男演绎LT12限量系列！速来围观！', // 分享标题
-// 	        desc: '', // 分享描述
-// 	        link: 'http://www.lt12.cn/lookbook/index.php', // 分享链接
-// 	        imgUrl: 'http://www.lt12.cn/lookbook/images/share/lookbooksharepic.jpg', // 分享图标
-// 	        type: '', // 分享类型,music、video或link，不填默认为link
-// 	        dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-// 	        success: function () { 
-// 	            // 用户确认分享后执行的回调函数
-// 	        },
-// 	        cancel: function () { 
-// 	            // 用户取消分享后执行的回调函数
-// 	        }
-// 	    });
-// 	});
-// }
+	wx.ready(function () {
+	    wx.onMenuShareTimeline({
+	        title: ' LACOSTE互动【产品型录】中更有型男演绎LT12限量系列！速来围观！', // 分享标题
+	        link: 'http://www.lt12.cn/lookbook/index.php', // 分享链接
+	        imgUrl: 'http://www.lt12.cn/lookbook/images/share/lookbooksharepic.jpg', // 分享图标
+	        success: function () {
+	        },
+	        cancel: function () {
+	        }
+	    });
+	    wx.onMenuShareAppMessage({
+	        title: 'LACOSTE互动【产品型录】中更有型男演绎LT12限量系列！速来围观！', // 分享标题
+	        desc: '', // 分享描述
+	        link: 'http://www.lt12.cn/lookbook/index.php', // 分享链接
+	        imgUrl: 'http://www.lt12.cn/lookbook/images/share/lookbooksharepic.jpg', // 分享图标
+	        type: '', // 分享类型,music、video或link，不填默认为link
+	        dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+	        success: function () { 
+	            // 用户确认分享后执行的回调函数
+	        },
+	        cancel: function () { 
+	            // 用户取消分享后执行的回调函数
+	        }
+	    });
+	});
+}
