@@ -874,14 +874,14 @@ function changeCity(){
 	}else if(city==2){
 		$('.cityZurich').css('z-index', 0).children().fadeOut(300);
 		
-		LGlobal.setFrameRate(5);
+		LGlobal.setFrameRate(1);
 		
 		backLayer.die();
 		
 		cloud = new LBitmap(new LBitmapData(imgList["bg_2"]));
 		cloud.x = 0;
+		cloud.y = -window.innerHeight;
 		backLayer.addChild(cloud);
-		backLayer.addChild(background);
 		backLayer.addEventListener(LEvent.ENTER_FRAME, onZurichFrame);
 		
 		city = 3;
@@ -896,8 +896,9 @@ function changeCity(){
 };
 
 function onZurichFrame(){
-	background.y -= 10;
-	if(background.y + window.innerHeight <= 0){
+	background.y += 1;
+	cloud.y += 1;
+	if(background.y >= window.innerHeight){
 		backLayer.die();
 		backLayer.removeChild(background);
 		
