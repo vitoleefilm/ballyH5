@@ -1034,15 +1034,14 @@ $(function(){
 	});
 	
 	$('.btnGift').click(function(){
+		$('.cityForm').remove();
+		
 		$('.score').fadeOut(300,function(){
 			$(this).removeAttr('style');
 		});
 		$('.giftForm').show().animate({opacity:1, marginTop:-324}, 500);
 	});
 	
-	$('.giftForm').on('blur', 'input', function(){
-		//update();
-	});
 });
 
 $(window).on("scroll.elasticity", function(e) {
