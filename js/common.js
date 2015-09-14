@@ -1,4 +1,4 @@
-var backLayer, background, treeLayer, treeBg, codeLayer, codeBg, audio, cloud,
+var backLayer, background, treeLayer, treeBg, codeLayer, codeBg, audio, cloud, resultCity=[], 
 	city = 0, run = 1, score = 0, scoreAll = 0, length = 0, play = 0, tree = 0, code = 0,
 	imgList = {}, playList = {}, treeList = {}, codeList = {},
 	imgData = new Array(
@@ -883,12 +883,15 @@ function changeCity(){
 	treeLayer.removeAllChild();
 	
 	if(city == 3){
+		$('.city_num').val(resultCity.length);
+		
 		$('.score').find('strong').html(scoreAll);
 		$('.score').show().animate({opacity:1, marginTop:-367}, 500);
 		
 		cloud = background.clone();
 		cloud.x = -997;
 		backLayer.addChild(cloud);
+		
 		codeLayer.addEventListener(LEvent.ENTER_FRAME, onCloudFrame);
 	};
 };
@@ -990,6 +993,17 @@ $(function(){
 					score += 1;
 					break;
 			};
+			switch (city){
+				case 0:
+					resultCity.push('1');
+				break;
+				case 1:
+					resultCity.push('2');
+				break;
+				case 2:
+					resultCity.push('3');
+				break;
+			}
 		}else{
 			if(run == 8){
 				score += 0;
