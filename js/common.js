@@ -873,15 +873,14 @@ function changeCity(){
 		city = 2;
 	}else if(city==2){
 		$('.cityZurich').css('z-index', 0).children().fadeOut(300);
-		
-		LGlobal.setFrameRate(1);
-		
+			
 		backLayer.die();
 		
 		cloud = new LBitmap(new LBitmapData(imgList["bg_2"]));
 		cloud.x = 0;
-		cloud.y = -window.innerHeight;
+		cloud.alpha = 0;
 		backLayer.addChild(cloud);
+		backLayer.addChild(background);
 		backLayer.addEventListener(LEvent.ENTER_FRAME, onZurichFrame);
 		
 		city = 3;
@@ -896,13 +895,13 @@ function changeCity(){
 };
 
 function onZurichFrame(){
-	background.y += 1;
-	cloud.y += 1;
-	if(background.y >= window.innerHeight){
+	background.alpha -= .1;
+	cloud.alpha += .1;
+	if(background.alpha <= 0){
 		backLayer.die();
 		backLayer.removeChild(background);
 		
-		LGlobal.setFrameRate(60);
+		//LGlobal.setFrameRate(60);
 		
 		$('.city_num').val(resultCity.length);
 		
@@ -917,6 +916,8 @@ function onZurichFrame(){
 		backLayer.addChild(background);
 		
 		codeLayer.addEventListener(LEvent.ENTER_FRAME, onCloudFrame);
+	}
+		/*
 <<<<<<< Updated upstream
 	}
 =======
@@ -924,7 +925,7 @@ function onZurichFrame(){
 		shareContent = '我猜对了'+resultCity.length+'个城市，获得'+scoreAll+'分，即刻赢取 BALLY 秋冬新包！';
 		alert(shareContent);
 	};
->>>>>>> Stashed changes
+>>>>>>> Stashed changes*/
 };
 
 function onCloudFrame(){
