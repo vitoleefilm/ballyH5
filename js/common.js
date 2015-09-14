@@ -1,9 +1,13 @@
-var backLayer, background, treeLayer, treeBg, codeLayer, codeBg, 
+var backLayer, background, treeLayer, treeBg, codeLayer, codeBg, audio,
 	city = 0, run = 1, score = 0, scoreAll = 0, length = 0, play = 0, tree = 0, code = 0,
 	imgList = {}, playList = {}, treeList = {}, codeList = {},
 	imgData = new Array(
 		{name:"bg_1", path:"./imgs/page1_bg.jpg"},
-		{name:"bg_2", path:"./imgs/page3_bg.jpg"}
+		{name:"bg_2", path:"./imgs/page3_bg.jpg"},
+		{name:"audioLondon",path:"./audios/audioLondon.mp3"},
+		{name:"audioMilan",path:"./audios/audioMilan.mp3"},
+		{name:"audioZurich",path:"./audios/audioZurich.mp3"},
+		{name:"audioWind",path:"./audios/audioWind.mp3"}
 	),
 	imgLondon12 = {}, imgLondon15 = {}, imgLondon23 = {}, imgLondon25 = {}, imgLondon34 = {}, imgLondon35 = {}, imgLondon45 = {},
 	imgDataLondon12 = new Array(
@@ -415,6 +419,9 @@ function main(){
 	LGlobal.preventDefault = false;
 	LSystem.screen(LStage.FULL_SCREEN);
 	
+	update();
+    LGlobal.stage.addEventListener(LEvent.WINDOW_RESIZE, update);
+	
 	//游戏逐层初始化
 	backLayer = new LSprite();
 	addChild(backLayer);
@@ -426,9 +433,17 @@ function main(){
 	//钮扣层
 	codeLayer = new LSprite();
 	addChild(codeLayer);
+	
+	//音频
+	audio = new LSound();
 		
 	LLoadManage.load(imgData, function(progress){}, bInit);
 };
+function update(){
+	LGlobal.resize(window.innerWidth, window.innerHeight);
+	$('canvas').attr({'width':750, 'height':window.innerHeight});
+};
+
 function bInit(result){
 	imgList = result;
 	
@@ -498,6 +513,9 @@ function step_2(){
 		//城市 London
 		background = new LBitmap(new LBitmapData(imgLondon12["0"]));
 		backLayer.addChild(background);
+		
+		audio.load(imgList['audioLondon']);
+		audio.play(0, 100);
 		
 		codeList = imgCode01;
 		codeLayer.addEventListener(LEvent.ENTER_FRAME, onCodeFrame);		
@@ -769,7 +787,9 @@ function onTreeRunFrame(){
 };
 
 function onCodeFrame(){
-	LGlobal.setFrameRate(150);
+	
+	LGlobal.setFrameRate(200);
+	
 	codeLayer.removeAllChild();
 	
 	codeBg = new LBitmap(new LBitmapData(codeList[String(code)]));
@@ -809,6 +829,7 @@ function cityEnd(){
 function changeCity(){
 	score = 0;
 	run = 1;
+	audio.close();
 	$('button span', '.cityForm').removeAttr('class');
 	if(city==0){
 		$('.cityLondon').css('z-index', 0).children().fadeOut(300);
@@ -816,6 +837,9 @@ function changeCity(){
 		//城市 Milan
 		background = new LBitmap(new LBitmapData(imgMilan12["0"]));
 		$('.cityForm').addClass('run').data('val', '米兰');
+		
+		audio.load(imgList['audioMilan']);
+		audio.play(0, 100);
 		
 		codeList = imgCode11;
 		codeLayer.addEventListener(LEvent.ENTER_FRAME, onCodeFrame);
@@ -828,6 +852,9 @@ function changeCity(){
 		background = new LBitmap(new LBitmapData(imgZurich12["0"]));
 		$('.cityForm').addClass('run').data('val', '苏黎世');
 		
+		audio.load(imgList['audioZurich']);
+		audio.play(0, 100);
+		
 		codeList = imgCode21;
 		codeLayer.addEventListener(LEvent.ENTER_FRAME, onCodeFrame);
 		
@@ -836,6 +863,9 @@ function changeCity(){
 		$('.cityZurich').css('z-index', 0).children().fadeOut(300);
 		
 		background = new LBitmap(new LBitmapData(imgList["bg_2"]));
+		
+		audio.load(imgList['audioWind']);
+		audio.play(0, 100);
 		
 		city = 3;
 	}else{
@@ -975,6 +1005,10 @@ $(function(){
 			$(this).removeAttr('style');
 		});
 		$('.giftForm').show().animate({opacity:1, marginTop:-324}, 500);
+	});
+	
+	$('.giftForm').on('blur', 'input', function(){
+		//update();
 	});
 });
 
