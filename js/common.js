@@ -1,4 +1,4 @@
-var backLayer, background, treeLayer, treeBg, codeLayer, codeBg, audio,
+var backLayer, background, treeLayer, treeBg, codeLayer, codeBg, audio, cloud,
 	city = 0, run = 1, score = 0, scoreAll = 0, length = 0, play = 0, tree = 0, code = 0,
 	imgList = {}, playList = {}, treeList = {}, codeList = {},
 	imgData = new Array(
@@ -788,7 +788,7 @@ function onTreeRunFrame(){
 
 function onCodeFrame(){
 	
-	LGlobal.setFrameRate(200);
+	LGlobal.setFrameRate(300);
 	
 	codeLayer.removeAllChild();
 	
@@ -863,6 +863,7 @@ function changeCity(){
 		$('.cityZurich').css('z-index', 0).children().fadeOut(300);
 		
 		background = new LBitmap(new LBitmapData(imgList["bg_2"]));
+		background.x = 0;
 		
 		audio.load(imgList['audioWind']);
 		audio.play(0, 100);
@@ -883,9 +884,27 @@ function changeCity(){
 	
 	if(city == 3){
 		$('.score').find('strong').html(scoreAll);
-		$('.score').show().animate({opacity:1,marginTop:-367}, 500);
+		$('.score').show().animate({opacity:1, marginTop:-367}, 500);
+		
+		cloud = background.clone();
+		cloud.x = -997;
+		backLayer.addChild(cloud);
+		codeLayer.addEventListener(LEvent.ENTER_FRAME, onCloudFrame);
 	};
 };
+
+function onCloudFrame(){
+	background.x += 1;
+	cloud.x += 1;
+	if(background.x >= 997){
+		background.x = -997;
+	};
+	if(cloud.x >= 997){
+		cloud.x = -997;
+	};
+}
+
+
 
 init(60, 'wrap', window.innerWidth, window.innerHeight, main); //初始化框架
 
