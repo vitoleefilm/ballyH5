@@ -834,8 +834,14 @@ function changeCity(){
 	if(city==0){
 		$('.cityLondon').css('z-index', 0).children().fadeOut(300);
 		
+		//背景层清空
+		backLayer.die();
+		backLayer.removeAllChild();
+
 		//城市 Milan
 		background = new LBitmap(new LBitmapData(imgMilan12["0"]));
+		backLayer.addChild(background);
+		
 		$('.cityForm').addClass('run').data('val', '米兰');
 		
 		audio.load(imgList['audioMilan']);
@@ -848,8 +854,14 @@ function changeCity(){
 	}else if(city==1){
 		$('.cityMilan').css('z-index', 0).children().fadeOut(300);
 		
+		//背景层清空
+		backLayer.die();
+		backLayer.removeAllChild();
+
 		//城市 Milan
 		background = new LBitmap(new LBitmapData(imgZurich12["0"]));
+		backLayer.addChild(background);
+		
 		$('.cityForm').addClass('run').data('val', '苏黎世');
 		
 		audio.load(imgList['audioZurich']);
@@ -862,38 +874,49 @@ function changeCity(){
 	}else if(city==2){
 		$('.cityZurich').css('z-index', 0).children().fadeOut(300);
 		
-		background = new LBitmap(new LBitmapData(imgList["bg_2"]));
-		background.x = 0;
+		LGlobal.setFrameRate(5);
 		
-		audio.load(imgList['audioWind']);
-		audio.play(0, 100);
+		backLayer.die();
+		
+		cloud = new LBitmap(new LBitmapData(imgList["bg_2"]));
+		cloud.x = 0;
+		backLayer.addChild(cloud);
+		backLayer.addChild(background);
+		backLayer.addEventListener(LEvent.ENTER_FRAME, onZurichFrame);
 		
 		city = 3;
+		
 	}else{
 		return false;
 	}
 	
-	//背景层清空
-	backLayer.die();
-	backLayer.removeAllChild();
-	backLayer.addChild(background);
-	
 	//树层清空
 	treeLayer.die();
 	treeLayer.removeAllChild();
-	
-	if(city == 3){
+};
+
+function onZurichFrame(){
+	background.y -= 10;
+	if(background.y + window.innerHeight <= 0){
+		backLayer.die();
+		backLayer.removeChild(background);
+		
+		LGlobal.setFrameRate(60);
+		
 		$('.city_num').val(resultCity.length);
 		
 		$('.score').find('strong').html(scoreAll);
 		$('.score').show().animate({opacity:1, marginTop:-367}, 500);
 		
-		cloud = background.clone();
-		cloud.x = -997;
-		backLayer.addChild(cloud);
+		audio.load(imgList['audioWind']);
+		audio.play(0, 100);
+		
+		background = cloud.clone();
+		background.x = -997;
+		backLayer.addChild(background);
 		
 		codeLayer.addEventListener(LEvent.ENTER_FRAME, onCloudFrame);
-	};
+	}
 };
 
 function onCloudFrame(){
