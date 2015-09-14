@@ -917,7 +917,14 @@ function onZurichFrame(){
 		backLayer.addChild(background);
 		
 		codeLayer.addEventListener(LEvent.ENTER_FRAME, onCloudFrame);
+<<<<<<< Updated upstream
 	}
+=======
+
+		shareContent = '我猜对了'+resultCity.length+'个城市，获得'+scoreAll+'分，即刻赢取 BALLY 秋冬新包！';
+		alert(shareContent);
+	};
+>>>>>>> Stashed changes
 };
 
 function onCloudFrame(){

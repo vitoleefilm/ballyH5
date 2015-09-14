@@ -1,6 +1,6 @@
 <?php
 require_once "weixin.php";
-$jssdk = new WEIXIN("wxa7f65d2ea613627a", "38b39a59114fbafee8b70c6d673a52b7");
+$jssdk = new WEIXIN("wx56bf927568b41f29", "13a14ee11e306822f6ec89ee983bb58f");
 $signPackage = $jssdk->GetSignPackage();
 ?><!doctype html>
 <html>
@@ -128,7 +128,7 @@ $signPackage = $jssdk->GetSignPackage();
 						<li><input type="text" class="user_name" placeholder="姓名"></li>
 						<li><input type="text" class="mobile_number" placeholder="手机"></li>
 						<li><input type="text" class="wechat_name" placeholder="微信"></li>
-						<li><input type="hidden" class="play_time" value="1"></li>
+						<li><input type="hidden" class="play_time" value="1"><input type="hidden" class="city_num" value="0"></li>
 						<li><button class="btnSubmit" type="button">提交</button></li>
 					</ul>
 				</section>
@@ -158,6 +158,8 @@ $signPackage = $jssdk->GetSignPackage();
         timestamp 	= <?php echo $signPackage["timestamp"];?>;
         nonceStr 	= '<?php echo $signPackage["nonceStr"];?>';
         signature 	= '<?php echo $signPackage["signature"];?>';
+
+        shareContent = '猜猜我在哪座城';
         
 	</script>
 	

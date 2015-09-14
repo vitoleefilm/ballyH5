@@ -54,7 +54,6 @@ function isWeixinBrowser(){
 }
 if (isWeixinBrowser()) {
 	wx.config({
-		debug: true,
 	    appId: appId,
 	    timestamp: timestamp,
 	    nonceStr: nonceStr,
@@ -66,19 +65,19 @@ if (isWeixinBrowser()) {
 
 	wx.ready(function () {
 	    wx.onMenuShareTimeline({
-	        title: ' LACOSTE互动【产品型录】中更有型男演绎LT12限量系列！速来围观！', // 分享标题
-	        link: 'http://www.lt12.cn/lookbook/index.php', // 分享链接
-	        imgUrl: 'http://www.lt12.cn/lookbook/images/share/lookbooksharepic.jpg', // 分享图标
+	        title: '城市狂想', // 分享标题
+	        link: 'http://bally-goldenweek.ffshtest.net/index.php', // 分享链接
+	        imgUrl: '../imgs/share_cover.jpg', // 分享图标
 	        success: function () {
 	        },
 	        cancel: function () {
 	        }
 	    });
 	    wx.onMenuShareAppMessage({
-	        title: 'LACOSTE互动【产品型录】中更有型男演绎LT12限量系列！速来围观！', // 分享标题
-	        desc: '', // 分享描述
-	        link: 'http://www.lt12.cn/lookbook/index.php', // 分享链接
-	        imgUrl: 'http://www.lt12.cn/lookbook/images/share/lookbooksharepic.jpg', // 分享图标
+	        title: '城市狂想', // 分享标题
+	        desc: shareContent, // 分享描述
+	        link: 'http://bally-goldenweek.ffshtest.net/index.php', // 分享链接
+	        imgUrl: '../imgs/share_cover.jpg', // 分享图标
 	        type: '', // 分享类型,music、video或link，不填默认为link
 	        dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
 	        success: function () { 
