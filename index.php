@@ -11,6 +11,14 @@ $signPackage = $jssdk->GetSignPackage();
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="format-detection" content="telephone=no">
 <meta name="description" content="">
+<script type="text/javascript">
+	appId 		= '<?php echo $signPackage["appId"];?>';
+    timestamp 	= <?php echo $signPackage["timestamp"];?>;
+    nonceStr 	= '<?php echo $signPackage["nonceStr"];?>';
+    signature 	= '<?php echo $signPackage["signature"];?>';
+
+    var shareContent = '猜猜我在哪座城';
+</script>
 <title>Bally</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 
@@ -153,15 +161,6 @@ $signPackage = $jssdk->GetSignPackage();
 			<source src="audio/audio.mp3" type="audio/mpeg">
 		</audio>
 	</section>-->
-	<script type="text/javascript">
-		appId 		= '<?php echo $signPackage["appId"];?>';
-        timestamp 	= <?php echo $signPackage["timestamp"];?>;
-        nonceStr 	= '<?php echo $signPackage["nonceStr"];?>';
-        signature 	= '<?php echo $signPackage["signature"];?>';
-
-        shareContent = '猜猜我在哪座城';
-        
-	</script>
 	
 	<script src="js/jquery-2.1.3.min.js"></script>
 	<script src="js/lufylegend-1.9.10.min.js"></script>
