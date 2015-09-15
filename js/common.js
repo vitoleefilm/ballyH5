@@ -1,8 +1,9 @@
+init(60, 'wrap', window.innerWidth, window.innerHeight, main); //初始化框架
+
 var backLayer, background, treeLayer, treeBg, codeLayer, codeBg, audio, cloud, resultCity=[], 
 	city = 0, run = 1, score = 0, scoreAll = 0, length = 0, play = 0, tree = 0, code = 0,
 	imgList = {}, playList = {}, treeList = {}, codeList = {},
 	imgData = new Array(
-		{name:"bg_1", path:"./imgs/page1_bg.jpg"},
 		{name:"bg_2", path:"./imgs/page3_bg.jpg"},
 		{name:"audioLondon",path:"./audios/audioLondon.mp3"},
 		{name:"audioMilan",path:"./audios/audioMilan.mp3"},
@@ -349,7 +350,7 @@ var backLayer, background, treeLayer, treeBg, codeLayer, codeBg, audio, cloud, r
 		{name:'6', path:"./imgs/tree/milan/45/6.png"}
 	),
 	
-	imgCode01 = {}, imgCode02 = {}, imgCode03 = {}, imgCode11 = {}, imgCode12 = {}, imgCode13 = {}, imgCode21 = {}, imgCode22 = {}, imgCode23 = {},
+	imgCode01 = {}, imgCode02 = {}, imgCode11 = {}, imgCode12 = {}, imgCode21 = {}, imgCode22 = {},
 	imgDataCode01 = new Array(
 		{name:'0', path:"./imgs/code/london/1/0.png"}, {name:'1', path:"./imgs/code/london/1/1.png"}, {name:'2', path:"./imgs/code/london/1/2.png"},
 		{name:'3', path:"./imgs/code/london/1/3.png"}, {name:'4', path:"./imgs/code/london/1/4.png"}, {name:'5', path:"./imgs/code/london/1/5.png"},
@@ -360,13 +361,7 @@ var backLayer, background, treeLayer, treeBg, codeLayer, codeBg, audio, cloud, r
 		{name:'0', path:"./imgs/code/london/2/0.png"}, {name:'1', path:"./imgs/code/london/2/1.png"}, {name:'2', path:"./imgs/code/london/2/2.png"},
 		{name:'3', path:"./imgs/code/london/2/3.png"}, {name:'4', path:"./imgs/code/london/2/4.png"}, {name:'5', path:"./imgs/code/london/2/5.png"},
 		{name:'6', path:"./imgs/code/london/2/6.png"}, {name:'7', path:"./imgs/code/london/2/7.png"}, {name:'8', path:"./imgs/code/london/2/8.png"},
-		{name:'9', path:"./imgs/code/london/2/9.png"}
-	),
-	imgDataCode03 = new Array(
-		{name:'0', path:"./imgs/code/london/3/0.png"}, {name:'1', path:"./imgs/code/london/3/1.png"}, {name:'2', path:"./imgs/code/london/3/2.png"},
-		{name:'3', path:"./imgs/code/london/3/3.png"}, {name:'4', path:"./imgs/code/london/3/4.png"}, {name:'5', path:"./imgs/code/london/3/5.png"},
-		{name:'6', path:"./imgs/code/london/3/6.png"}, {name:'7', path:"./imgs/code/london/3/7.png"}, {name:'8', path:"./imgs/code/london/3/8.png"},
-		{name:'9', path:"./imgs/code/london/3/9.png"}, {name:'10', path:"./imgs/code/london/3/10.png"}, {name:'11', path:"./imgs/code/london/3/11.png"}
+		{name:'9', path:"./imgs/code/london/2/9.png"}, {name:'10', path:"./imgs/code/london/2/10.png"}
 	),
 	
 	imgDataCode11 = new Array(
@@ -381,15 +376,6 @@ var backLayer, background, treeLayer, treeBg, codeLayer, codeBg, audio, cloud, r
 		{name:'6', path:"./imgs/code/milan/2/6.png"}, {name:'7', path:"./imgs/code/milan/2/7.png"}, {name:'8', path:"./imgs/code/milan/2/8.png"},
 		{name:'9', path:"./imgs/code/milan/2/9.png"}
 	),
-	imgDataCode13 = new Array(
-		{name:'0', path:"./imgs/code/milan/3/0.png"}, {name:'1', path:"./imgs/code/milan/3/1.png"}, {name:'2', path:"./imgs/code/milan/3/2.png"},
-		{name:'3', path:"./imgs/code/milan/3/3.png"}, {name:'4', path:"./imgs/code/milan/3/4.png"}, {name:'5', path:"./imgs/code/milan/3/5.png"},
-		{name:'6', path:"./imgs/code/milan/3/6.png"}, {name:'7', path:"./imgs/code/milan/3/7.png"}, {name:'8', path:"./imgs/code/milan/3/8.png"},
-		{name:'9', path:"./imgs/code/milan/3/9.png"}, {name:'10', path:"./imgs/code/milan/3/10.png"}, {name:'11', path:"./imgs/code/milan/3/11.png"},
-		{name:'12', path:"./imgs/code/milan/3/12.png"}, {name:'13', path:"./imgs/code/milan/3/13.png"}, {name:'14', path:"./imgs/code/milan/3/14.png"},
-		{name:'15', path:"./imgs/code/milan/3/15.png"}, {name:'16', path:"./imgs/code/milan/3/16.png"}, {name:'17', path:"./imgs/code/milan/3/17.png"},
-		{name:'18', path:"./imgs/code/milan/3/18.png"}, {name:'19', path:"./imgs/code/milan/3/19.png"}
-	),
 	
 	imgDataCode21 = new Array(
 		{name:'0', path:"./imgs/code/zurich/1/0.png"}, {name:'1', path:"./imgs/code/zurich/1/1.png"}, {name:'2', path:"./imgs/code/zurich/1/2.png"},
@@ -402,15 +388,6 @@ var backLayer, background, treeLayer, treeBg, codeLayer, codeBg, audio, cloud, r
 		{name:'3', path:"./imgs/code/zurich/2/3.png"}, {name:'4', path:"./imgs/code/zurich/2/4.png"}, {name:'5', path:"./imgs/code/zurich/2/5.png"},
 		{name:'6', path:"./imgs/code/zurich/2/6.png"}, {name:'7', path:"./imgs/code/zurich/2/7.png"}, {name:'8', path:"./imgs/code/zurich/2/8.png"},
 		{name:'9', path:"./imgs/code/zurich/2/9.png"}
-	),
-	imgDataCode23 = new Array(
-		{name:'0', path:"./imgs/code/zurich/3/0.png"}, {name:'1', path:"./imgs/code/zurich/3/1.png"}, {name:'2', path:"./imgs/code/zurich/3/2.png"},
-		{name:'3', path:"./imgs/code/zurich/3/3.png"}, {name:'4', path:"./imgs/code/zurich/3/4.png"}, {name:'5', path:"./imgs/code/zurich/3/5.png"},
-		{name:'6', path:"./imgs/code/zurich/3/6.png"}, {name:'7', path:"./imgs/code/zurich/3/7.png"}, {name:'8', path:"./imgs/code/zurich/3/8.png"},
-		{name:'9', path:"./imgs/code/zurich/3/9.png"}, {name:'10', path:"./imgs/code/zurich/3/10.png"}, {name:'11', path:"./imgs/code/zurich/3/11.png"},
-		{name:'12', path:"./imgs/code/zurich/3/12.png"}, {name:'13', path:"./imgs/code/zurich/3/13.png"}, {name:'14', path:"./imgs/code/zurich/3/14.png"},
-		{name:'15', path:"./imgs/code/zurich/3/15.png"}, {name:'16', path:"./imgs/code/zurich/3/16.png"}, {name:'17', path:"./imgs/code/zurich/3/17.png"},
-		{name:'18', path:"./imgs/code/zurich/3/18.png"}, {name:'19', path:"./imgs/code/zurich/3/19.png"}
 	);
 	
 function main(){
@@ -418,6 +395,7 @@ function main(){
 	LGlobal.stageScale = LStageScaleMode.SHOW_ALL;
 	LGlobal.preventDefault = false;
 	LSystem.screen(LStage.FULL_SCREEN);
+	LGlobal.setDebug(true);
 	
 	update();
     LGlobal.stage.addEventListener(LEvent.WINDOW_RESIZE, update);
@@ -436,25 +414,28 @@ function main(){
 	
 	//音频
 	audio = new LSound();
+	
+	var loader = new LLoader();
+	loader.addEventListener(LEvent.COMPLETE, function(event){
+		//背景图片显示
+		background = new LBitmap(new LBitmapData(event.target));
+		backLayer.addChild(background);
 		
-	LLoadManage.load(imgData, function(progress){}, bInit);
+		loadCityLondon();
+		
+		LLoadManage.load(imgData, function(progress){}, function(result){ imgList = result; });
+	}); 
+    loader.load("./imgs/page1_bg.jpg", "bitmapData");
 };
+
 function update(){
 	LGlobal.resize(window.innerWidth, window.innerHeight);
 	$('canvas').attr({'width':750, 'height':window.innerHeight});
 };
 
-function bInit(result){
-	imgList = result;
-	
-	//背景图片显示
-	background = new LBitmap(new LBitmapData(imgList["bg_1"]));
-	backLayer.addChild(background);
-	
-	
+function loadCityLondon(){
 	LLoadManage.load(imgDataCode01, function(progress){}, function(result){ imgCode01 = result; });
 	LLoadManage.load(imgDataCode02, function(progress){}, function(result){ imgCode02 = result; });
-	LLoadManage.load(imgDataCode03, function(progress){}, function(result){ imgCode03 = result; });
 	
 	LLoadManage.load(imgDataLondon12, function(progress){}, function(result){ imgLondon12 = result; });
 	LLoadManage.load(imgDataLondon15, function(progress){}, function(result){ imgLondon15 = result; });
@@ -462,11 +443,12 @@ function bInit(result){
 	LLoadManage.load(imgDataLondon25, function(progress){}, function(result){ imgLondon25 = result; });
 	LLoadManage.load(imgDataLondon34, function(progress){}, function(result){ imgLondon34 = result; });
 	LLoadManage.load(imgDataLondon35, function(progress){}, function(result){ imgLondon35 = result; });
-	LLoadManage.load(imgDataLondon45, function(progress){}, loadCity);
-		
+	LLoadManage.load(imgDataLondon45, function(progress){}, function(result){ imgLondon45 = result; loadCityMilan(); });
+}
+
+function loadCityMilan(){
 	LLoadManage.load(imgDataCode11, function(progress){}, function(result){ imgCode11 = result; });
 	LLoadManage.load(imgDataCode12, function(progress){}, function(result){ imgCode12 = result; });
-	LLoadManage.load(imgDataCode13, function(progress){}, function(result){ imgCode13 = result; });
 	
 	LLoadManage.load(imgDataMilan12, function(progress){}, function(result){ imgMilan12 = result; });
 	LLoadManage.load(imgDataMilan15, function(progress){}, function(result){ imgMilan15 = result; });
@@ -474,16 +456,12 @@ function bInit(result){
 	LLoadManage.load(imgDataMilan25, function(progress){}, function(result){ imgMilan25 = result; });
 	LLoadManage.load(imgDataMilan34, function(progress){}, function(result){ imgMilan34 = result; });
 	LLoadManage.load(imgDataMilan35, function(progress){}, function(result){ imgMilan35 = result; });
-	LLoadManage.load(imgDataMilan45, function(progress){}, function(result){ imgMilan45 = result; });
-	
-};
+	LLoadManage.load(imgDataMilan45, function(progress){}, function(result){ imgMilan45 = result; loadCityZurich(); });
+}
 
-function loadCity(result){
-	imgLondon45 = result;	
-	
+function loadCityZurich(){
 	LLoadManage.load(imgDataCode21, function(progress){}, function(result){ imgCode21 = result; });
 	LLoadManage.load(imgDataCode22, function(progress){}, function(result){ imgCode22 = result; });
-	LLoadManage.load(imgDataCode23, function(progress){}, function(result){ imgCode23 = result; });
 	
 	LLoadManage.load(imgDataZurich12, function(progress){}, function(result){ imgZurich12 = result; });
 	LLoadManage.load(imgDataZurich15, function(progress){}, function(result){ imgZurich15 = result; });
@@ -492,8 +470,7 @@ function loadCity(result){
 	LLoadManage.load(imgDataZurich34, function(progress){}, function(result){ imgZurich34 = result; });
 	LLoadManage.load(imgDataZurich35, function(progress){}, function(result){ imgZurich35 = result; });
 	LLoadManage.load(imgDataZurich45, function(progress){}, function(result){ imgZurich45 = result; });
-};
-
+}
 
 function step_1(){
 	$('.slogan, .btnStart, .btnLink').addClass('run');
@@ -583,7 +560,6 @@ function cityRun(){
 			case 3:
 				length = imgLondon23.length;
 				playList = imgLondon23;
-				codeList = imgCode03;
 				run = 5;
 			break;
 			case 4:
@@ -633,7 +609,6 @@ function cityRun(){
 			case 3:
 				length = imgMilan23.length;
 				playList = imgMilan23;
-				codeList = imgCode13;
 				run = 5;
 			break;
 			case 4:
@@ -688,7 +663,6 @@ function cityRun(){
 			case 3:
 				length = imgZurich23.length;
 				playList = imgZurich23;
-				codeList = imgCode23;
 				run = 5;
 			break;
 			case 4:
@@ -873,15 +847,14 @@ function changeCity(){
 		city = 2;
 	}else if(city==2){
 		$('.cityZurich').css('z-index', 0).children().fadeOut(300);
-		
-		LGlobal.setFrameRate(1);
-		
+			
 		backLayer.die();
 		
 		cloud = new LBitmap(new LBitmapData(imgList["bg_2"]));
 		cloud.x = 0;
-		cloud.y = -window.innerHeight;
+		cloud.alpha = 0;
 		backLayer.addChild(cloud);
+		backLayer.addChild(background);
 		backLayer.addEventListener(LEvent.ENTER_FRAME, onZurichFrame);
 		
 		city = 3;
@@ -896,18 +869,16 @@ function changeCity(){
 };
 
 function onZurichFrame(){
-	background.y += 1;
-	cloud.y += 1;
-	if(background.y >= window.innerHeight){
+	background.alpha -= .1;
+	cloud.alpha += .1;
+	if(background.alpha <= 0){
 		backLayer.die();
 		backLayer.removeChild(background);
 		
-		LGlobal.setFrameRate(60);
-		
 		$('.city_num').val(resultCity.length);
 		
-		$('.score').find('strong').html(scoreAll);
 		shareContent = '我猜对了'+resultCity.length+'个城市，获得'+scoreAll+'分，即刻赢取 BALLY 秋冬新包！';
+		$('.score').find('strong').html(scoreAll);
 		$('.score').show().animate({opacity:1, marginTop:-367}, 500);
 		
 		audio.load(imgList['audioWind']);
@@ -934,9 +905,6 @@ function onCloudFrame(){
 
 
 
-init(60, 'wrap', window.innerWidth, window.innerHeight, main); //初始化框架
-
-
 $(function(){
 	
 	$(window).trigger('orientationchange');
@@ -958,7 +926,8 @@ $(function(){
 	
 	var imgs = [
 		"logo_1.png", "spriteBg.jpg", "page1_bg.jpg", "page3_bg.jpg", "arrow.png", "btnFull.png", "btnEmpty.png", "mobile.png", 
-		"spriteCityCont_1.png", "spriteCityCont_2.png", "spriteScore.png", "wx_code.png", "shareTip.png",
+		"spriteCityCont_1.png", "spriteCityCont_2.png", "spriteScore.png", "wx_code.png", "shareTip.png" ], 
+		citys = [
 		"city/london/12/0.jpg", "city/london/12/1.jpg", "city/london/12/2.jpg", "city/london/12/3.jpg", "city/london/12/4.jpg", "city/london/12/5.jpg",
 		"city/london/12/6.jpg", "city/london/12/7.jpg", "city/london/12/8.jpg", "city/london/12/9.jpg", "city/london/12/10.jpg", "city/london/12/11.jpg",
 		"city/london/15/0.jpg", "city/london/15/1.jpg", "city/london/15/2.jpg", "city/london/15/3.jpg", "city/london/15/4.jpg", "city/london/15/5.jpg",
@@ -972,18 +941,18 @@ $(function(){
 		"city/london/35/0.jpg", "city/london/35/1.jpg", "city/london/35/2.jpg", "city/london/35/3.jpg", "city/london/35/4.jpg", "city/london/35/5.jpg",
 		"city/london/35/6.jpg", "city/london/35/7.jpg", "city/london/35/8.jpg", "city/london/35/9.jpg", "city/london/35/10.jpg", "city/london/35/11.jpg",
 		"city/london/45/0.jpg", "city/london/45/1.jpg", "city/london/45/2.jpg", "city/london/45/3.jpg", "city/london/45/4.jpg", "city/london/45/5.jpg",
-		"city/london/45/6.jpg", "city/london/45/7.jpg", "city/london/45/8.jpg", "city/london/45/9.jpg", "city/london/45/10.jpg"
-	];
+		"city/london/45/6.jpg", "city/london/45/7.jpg", "city/london/45/8.jpg", "city/london/45/9.jpg", "city/london/45/10.jpg" ];
 
 	$.preloadimg(imgs, function(){
 		$("img").each(function(index, element) {
 			$(this).attr("src", $(this).data("src"));
 		});
-		
-		$("#loading").delay(500).fadeOut(300,function(){
-			clearInterval(bgRun,dotRun);
-			$(this).remove();
-			step_1();
+		$.preloadimg(citys, function(){
+			$("#loading").delay(500).fadeOut(300,function(){
+				clearInterval(bgRun,dotRun);
+				$(this).remove();
+				step_1();
+			});
 		});
 	});	
 	
