@@ -20,6 +20,7 @@
 		});
 	};
 });
+console.log(window.location.host+'/imgs/share_cover.jpg');
 $('.btnSubmit').click(function(){
 	var $this = $(this);
 	if ($this.hasClass('ajaxed')) {
@@ -67,7 +68,7 @@ if (isWeixinBrowser()) {
 	    wx.onMenuShareTimeline({
 	        title: '城市狂想', // 分享标题
 	        link: 'http://bally-goldenweek.ffshtest.net/index.php', // 分享链接
-	        imgUrl: '../imgs/share_cover.jpg', // 分享图标
+	        imgUrl: 'http://bally-goldenweek.ffshtest.net/imgs/share_cover.jpg', // 分享图标
 	        success: function () {
 	        },
 	        cancel: function () {
@@ -77,11 +78,12 @@ if (isWeixinBrowser()) {
 	        title: '城市狂想', // 分享标题
 	        desc: shareContent, // 分享描述
 	        link: 'http://bally-goldenweek.ffshtest.net/index.php', // 分享链接
-	        imgUrl: '../imgs/share_cover.jpg', // 分享图标
+	        imgUrl: 'http://bally-goldenweek.ffshtest.net/imgs/share_cover.jpg', // 分享图标
 	        type: '', // 分享类型,music、video或link，不填默认为link
 	        dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
 	        success: function () { 
 	            // 用户确认分享后执行的回调函数
+	            alert(shareContent);
 	        },
 	        cancel: function () { 
 	            // 用户取消分享后执行的回调函数

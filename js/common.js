@@ -916,6 +916,7 @@ function onZurichFrame(){
 		backLayer.addChild(background);
 		
 		codeLayer.addEventListener(LEvent.ENTER_FRAME, onCloudFrame);
+<<<<<<< Updated upstream
 	}
 		/*
 <<<<<<< Updated upstream
@@ -926,6 +927,9 @@ function onZurichFrame(){
 		alert(shareContent);
 	};
 >>>>>>> Stashed changes*/
+=======
+	}
+>>>>>>> Stashed changes
 };
 
 function onCloudFrame(){
