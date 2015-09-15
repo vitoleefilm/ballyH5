@@ -902,7 +902,7 @@ function onZurichFrame(){
 		background.x = -997;
 		backLayer.addChild(background);
 		
-		codeLayer.addEventListener(LEvent.ENTER_FRAME, onCloudFrame);
+		backLayer.addEventListener(LEvent.ENTER_FRAME, onCloudFrame);
 	}
 };
 
@@ -1027,6 +1027,10 @@ $(function(){
 		score = 0;
 		scoreAll = 0;
 		city = 0;
+		tree = 0;
+		resultCity = [];
+		
+		backLayer.die();
 		
 		$('.score').fadeOut(300,function(){
 			$(this).removeAttr('style');
