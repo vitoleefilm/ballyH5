@@ -1,9 +1,11 @@
 init(60, 'wrap', window.innerWidth, window.innerHeight, main); //初始化框架
 
+var bgRun, dotRun;
 var backLayer, background, treeLayer, treeBg, codeLayer, codeBg, audio, cloud, resultCity=[], 
 	city = 0, run = 1, score = 0, scoreAll = 0, length = 0, play = 0, tree = 0, code = 0,
 	imgList = {}, playList = {}, treeList = {}, codeList = {},
 	imgData = new Array(
+		{name:"bg_1", path:"./imgs/page1_bg.jpg"},
 		{name:"bg_2", path:"./imgs/page3_bg.jpg"},
 		{name:"audioLondon",path:"./audios/audioLondon.mp3"},
 		{name:"audioMilan",path:"./audios/audioMilan.mp3"},
@@ -415,22 +417,21 @@ function main(){
 	//音频
 	audio = new LSound();
 	
-	var loader = new LLoader();
-	loader.addEventListener(LEvent.COMPLETE, function(event){
+	LLoadManage.load(imgData, function(progress){}, function(result){
+		imgList = result;
+		
 		//背景图片显示
-		background = new LBitmap(new LBitmapData(event.target));
+		background = new LBitmap(new LBitmapData(imgList['bg_1']));
 		backLayer.addChild(background);
 		
 		loadCityLondon();
-		
-		LLoadManage.load(imgData, function(progress){}, function(result){ imgList = result; });
-	}); 
-    loader.load("./imgs/page1_bg.jpg", "bitmapData");
+	});
+	
 };
 
 function update(){
 	LGlobal.resize(window.innerWidth, window.innerHeight);
-	$('canvas').attr({'width':750, 'height':window.innerHeight});
+	$('canvas').attr({'width':window.innerWidth, 'height':window.innerHeight});
 };
 
 function loadCityLondon(){
@@ -443,7 +444,13 @@ function loadCityLondon(){
 	LLoadManage.load(imgDataLondon25, function(progress){}, function(result){ imgLondon25 = result; });
 	LLoadManage.load(imgDataLondon34, function(progress){}, function(result){ imgLondon34 = result; });
 	LLoadManage.load(imgDataLondon35, function(progress){}, function(result){ imgLondon35 = result; });
-	LLoadManage.load(imgDataLondon45, function(progress){}, function(result){ imgLondon45 = result; loadCityMilan(); });
+	LLoadManage.load(imgDataLondon45, function(progress){}, function(result){ 
+		imgLondon45 = result; 
+		
+		loadCityMilan(); 
+		
+		step_1();
+	});
 }
 
 function loadCityMilan(){
@@ -473,7 +480,13 @@ function loadCityZurich(){
 }
 
 function step_1(){
-	$('.slogan, .btnStart, .btnLink').addClass('run');
+	
+	$("#loading").delay(500).fadeOut(300,function(){
+		clearInterval(bgRun,dotRun);
+		$(this).remove();
+		
+		$('.slogan, .btnStart, .btnLink').addClass('run');
+	});
 };
 
 function step_2(){
@@ -914,12 +927,12 @@ $(function(){
 	
 	$(window).trigger('orientationchange');
 	
-	var bgRun = setInterval(function(){
+	bgRun = setInterval(function(){
 		$('#loading').hasClass('run')? $('#loading').removeClass('run') : $('#loading').addClass('run');
 	}, 200);
 	
 	var dot=0;
-	var dotRun = setInterval(function(){
+	dotRun = setInterval(function(){
 		$('em', '#loading').eq(dot).show();
 		dot++;
 		if(dot > 3){
@@ -927,40 +940,7 @@ $(function(){
 			$('em', '#loading').hide();
 		}
 	}, 500);
-	
-	
-	var imgs = [
-		"logo_1.png", "spriteBg.jpg", "page1_bg.jpg", "page3_bg.jpg", "arrow.png", "btnFull.png", "btnEmpty.png", "mobile.png", 
-		"spriteCityCont_1.png", "spriteCityCont_2.png", "spriteScore.png", "wx_code.png", "shareTip.png" ], 
-		citys = [
-		"city/london/12/0.jpg", "city/london/12/1.jpg", "city/london/12/2.jpg", "city/london/12/3.jpg", "city/london/12/4.jpg", "city/london/12/5.jpg",
-		"city/london/12/6.jpg", "city/london/12/7.jpg", "city/london/12/8.jpg", "city/london/12/9.jpg", "city/london/12/10.jpg", "city/london/12/11.jpg",
-		"city/london/15/0.jpg", "city/london/15/1.jpg", "city/london/15/2.jpg", "city/london/15/3.jpg", "city/london/15/4.jpg", "city/london/15/5.jpg",
-		"city/london/15/6.jpg", "city/london/15/7.jpg", "city/london/15/8.jpg", "city/london/15/9.jpg", "city/london/15/10.jpg", "city/london/15/11.jpg",
-		"city/london/23/0.jpg", "city/london/23/1.jpg", "city/london/23/2.jpg", "city/london/23/3.jpg", "city/london/23/4.jpg", "city/london/23/5.jpg",
-		"city/london/23/6.jpg", "city/london/23/7.jpg", "city/london/23/8.jpg", "city/london/23/9.jpg", "city/london/23/10.jpg", "city/london/23/11.jpg",
-		"city/london/25/0.jpg", "city/london/25/1.jpg", "city/london/25/2.jpg", "city/london/25/3.jpg", "city/london/25/4.jpg", "city/london/25/5.jpg",
-		"city/london/25/6.jpg", "city/london/25/7.jpg", "city/london/25/8.jpg", "city/london/25/9.jpg", "city/london/25/10.jpg", "city/london/25/11.jpg",
-		"city/london/34/0.jpg", "city/london/34/1.jpg", "city/london/34/2.jpg", "city/london/34/3.jpg", "city/london/34/4.jpg", "city/london/34/5.jpg",
-		"city/london/34/6.jpg", "city/london/34/7.jpg", "city/london/34/8.jpg", "city/london/34/9.jpg", "city/london/34/10.jpg", "city/london/34/11.jpg",
-		"city/london/35/0.jpg", "city/london/35/1.jpg", "city/london/35/2.jpg", "city/london/35/3.jpg", "city/london/35/4.jpg", "city/london/35/5.jpg",
-		"city/london/35/6.jpg", "city/london/35/7.jpg", "city/london/35/8.jpg", "city/london/35/9.jpg", "city/london/35/10.jpg", "city/london/35/11.jpg",
-		"city/london/45/0.jpg", "city/london/45/1.jpg", "city/london/45/2.jpg", "city/london/45/3.jpg", "city/london/45/4.jpg", "city/london/45/5.jpg",
-		"city/london/45/6.jpg", "city/london/45/7.jpg", "city/london/45/8.jpg", "city/london/45/9.jpg", "city/london/45/10.jpg" ];
-
-	$.preloadimg(imgs, function(){
-		$("img").each(function(index, element) {
-			$(this).attr("src", $(this).data("src"));
-		});
-		$.preloadimg(citys, function(){
-			$("#loading").delay(500).fadeOut(300,function(){
-				clearInterval(bgRun,dotRun);
-				$(this).remove();
-				step_1();
-			});
-		});
-	});	
-	
+		
 	$('.btnStart').on('click', function(){
 		step_2();
 	});

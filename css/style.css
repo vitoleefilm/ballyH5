@@ -55,7 +55,7 @@ hr{display:block;clear:both;zoom:1;height:0;line-height:0;border:0;padding:0;con
 
 /*************************************/
 html,body{width:100%;height:100%;overflow:hidden}
-body{width:750px;margin:0 auto;background:#fff;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;-webkit-user-select:none;-moz-user-select:none;overflow:hidden}
+body{margin:0 auto;background:#fff;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;-webkit-user-select:none;-moz-user-select:none;overflow:hidden}
 
 #loading{position:absolute;left:50%;top:0;width:750px;height:100%;margin-left:-375px;background:url(../imgs/spriteBg.jpg) repeat left top;z-index:50}
 #loading.run{background-position:center center}
@@ -84,7 +84,7 @@ body{width:750px;margin:0 auto;background:#fff;box-sizing:border-box;-moz-box-si
 }
 .landscape p{position:absolute;left:0;top:50%;width:100%;margin-top:60px;line-height:40px;font-size:24px;color:#762322;text-align:center;letter-spacing:10px}
 
-#wrap{position:relative;width:750px;height:100%;overflow:hidden;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;z-index:0}
+#wrap{position:relative;width:750px;height:100%;margin:0 auto;overflow:hidden;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;z-index:0}
 
 #content{position:absolute;width:750px;height:100%;left:50%;margin-left:-375px;top:0;z-index:10}
 
