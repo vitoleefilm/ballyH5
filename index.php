@@ -38,7 +38,7 @@ $signPackage = $jssdk->GetSignPackage();
 			document.write('<meta name="viewport" content="width=750, target-densitydpi=device-dpi">');
 		}
 	}else{
-		document.write('<meta name="viewport" content="width=750, maximum-scale=1, user-scalable=no, target-densitydpi=device-dpi">');
+		document.write('<meta name="viewport" content="width=750, user-scalable=no, target-densitydpi=device-dpi">');
 	};
 	
 	//防止屏幕拖动

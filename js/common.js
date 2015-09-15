@@ -530,7 +530,7 @@ function step_2(){
 function cityRun(){
 	codeList = {}, treeList = {};
 	codeLayer.die(), treeLayer.die();
-	codeLayer.removeAllChild(), treeLayer.removeAllChild();
+	codeLayer.removeAllChild();
 	
 	play = 0;
 	code = 0;
@@ -713,7 +713,7 @@ function cityRun(){
 };
 function onFrame(){
 	
-	backLayer.removeAllChild();
+	backLayer.removeChild(background);
 	
 	//城市 London
 	background = new LBitmap(new LBitmapData(playList[String(play)]));
@@ -1042,7 +1042,6 @@ $(window).on("scroll.elasticity", function(e) {
 		//orientation = 'landscape';
 		$('.landscape').show();
 	}
-	return false;
 });
 
 $.extend({
