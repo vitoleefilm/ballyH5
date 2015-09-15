@@ -38,7 +38,7 @@ $signPackage = $jssdk->GetSignPackage();
 			document.write('<meta name="viewport" content="width=750, target-densitydpi=device-dpi">');
 		}
 	}else{
-		document.write('<meta name="viewport" content="width=750, user-scalable=no, target-densitydpi=device-dpi">');
+		document.write('<meta name="viewport" content="width=750, maximum-scale=1, user-scalable=no, target-densitydpi=device-dpi">');
 	};
 	
 	//防止屏幕拖动
@@ -151,22 +151,15 @@ $signPackage = $jssdk->GetSignPackage();
 		</section>
 		
 		<!-- 提交成功，分享页面 -->
-		<section class="shareBox"><img data-src="imgs/wx_code.png" alt=""></section>
+		<section class="shareBox"><img src="imgs/wx_code.png" alt=""></section>
 		
 		<!-- 分享提示 -->
-		<section class="shareTip"><img data-src="imgs/shareTip.png" alt=""></section>
+		<section class="shareTip"><img src="imgs/shareTip.png" alt=""></section>
 		
 	</section>
 	
-	<section class="landscape"><img data-src="imgs/mobile.png" alt=""></section>
+	<section class="landscape"><img src="imgs/mobile.png" alt=""></section>
 	
-	<!--<section class="audio">
-		<a href="javascript:;"></a>
-		<audio id="audio" loop preload="auto">
-			<source src="audio/audio.ogg" type="audio/ogg">
-			<source src="audio/audio.mp3" type="audio/mpeg">
-		</audio>
-	</section>-->
 	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 	<script type="text/javascript">
 		function isWeixinBrowser(){
