@@ -26,11 +26,25 @@ $('.btnSubmit').click(function(){
 	if ($this.hasClass('ajaxed')) {
 		return false;
 	}
+	$('.giftForm li').removeClass('error');
 	var user_name 		= $('.giftForm').find('.user_name').val();
 	var mobile_number 	= $('.giftForm').find('.mobile_number').val();
 	var wechat_name 	= $('.giftForm').find('.wechat_name').val();
 	var score 			= $('.score').find('strong').html();
 	var play_time 		= $('.giftForm').find('.play_time').val();
+	var city_num 		= $('.giftForm').find('.city_num').val();
+
+	if(user_name == '' || (/^[a-zA-Z ]{1,30}$/.test(user_name) == false && /^[\u4e00-\u9fa5]{1,10}$/.test(user_name) == false)) {
+		$('.giftForm .user_name').closest('li').addClass('error');
+		return false;
+	} else if (mobile_number ==  '' || /^1\d{10}/.test(mobile_number) == false) {
+		$('.giftForm .mobile_number').closest('li').addClass('error');
+		return false;
+	} else if (wechat_name == '' || /^[a-zA-Z0-9_]+$/.test(wechat_name) == false) {
+		$('.giftForm .wechat_name').closest('li').addClass('error');
+		return false;
+	}
+
 	$this.addClass('ajaxed');
 	$.post('save_info.php',{
 		user_name:user_name,
@@ -38,6 +52,7 @@ $('.btnSubmit').click(function(){
 		wechat_name:wechat_name,
 		score:score,
 		play_time:play_time,
+		city_num:city_num,
 		1:1
 	},function(rsp) {
 		if (rsp == 'SUCCESS') {
@@ -48,46 +63,3 @@ $('.btnSubmit').click(function(){
 		}
 	});
 });
-
-function isWeixinBrowser(){
-    var ua = navigator.userAgent.toLowerCase();
-    return (/micromessenger/.test(ua)) ? true : false ;
-}
-if (isWeixinBrowser()) {
-	wx.config({
-	    appId: appId,
-	    timestamp: timestamp,
-	    nonceStr: nonceStr,
-	    signature: signature,
-	    jsApiList: [
-	        'onMenuShareTimeline','onMenuShareAppMessage'
-	    ]
-	});
-
-	wx.ready(function () {
-	    wx.onMenuShareTimeline({
-	        title: '城市狂想', // 分享标题
-	        link: 'http://bally-goldenweek.ffshtest.net/index.php', // 分享链接
-	        imgUrl: 'http://bally-goldenweek.ffshtest.net/imgs/share_cover.jpg', // 分享图标
-	        success: function () {
-	        },
-	        cancel: function () {
-	        }
-	    });
-	    wx.onMenuShareAppMessage({
-	        title: '城市狂想', // 分享标题
-	        desc: shareContent, // 分享描述
-	        link: 'http://bally-goldenweek.ffshtest.net/index.php', // 分享链接
-	        imgUrl: 'http://bally-goldenweek.ffshtest.net/imgs/share_cover.jpg', // 分享图标
-	        type: '', // 分享类型,music、video或link，不填默认为link
-	        dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-	        success: function () { 
-	            // 用户确认分享后执行的回调函数
-	            alert(shareContent);
-	        },
-	        cancel: function () { 
-	            // 用户取消分享后执行的回调函数
-	        }
-	    });
-	});
-}

@@ -6,6 +6,7 @@ $signPackage = $jssdk->GetSignPackage();
 <html>
 <head>
 <meta charset="utf-8">
+<title>都市狂想</title>
 <meta name="apple-touch-fullscreen" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -17,7 +18,12 @@ $signPackage = $jssdk->GetSignPackage();
     nonceStr 	= '<?php echo $signPackage["nonceStr"];?>';
     signature 	= '<?php echo $signPackage["signature"];?>';
 
-    var shareContent = '猜猜我在哪座城';
+    shareObj = {
+    	title:'都市狂想',
+    	desc:'猜猜我在哪坐城',
+    	link: 'http://<? echo $_SERVER['HTTP_HOST'];?>',
+    	imgUrl: 'http://<? echo $_SERVER['HTTP_HOST'].'/imgs/share_cover.jpg'?>'
+    };
 </script>
 <title>Bally</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -161,11 +167,42 @@ $signPackage = $jssdk->GetSignPackage();
 			<source src="audio/audio.mp3" type="audio/mpeg">
 		</audio>
 	</section>-->
-	
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script type="text/javascript">
+		function isWeixinBrowser(){
+		    var ua = navigator.userAgent.toLowerCase();
+		    return (/micromessenger/.test(ua)) ? true : false ;
+		}
+		if (isWeixinBrowser()) {
+			wx.config({
+				debug:false,
+			    appId: appId,
+			    timestamp: timestamp,
+			    nonceStr: nonceStr,
+			    signature: signature,
+			    jsApiList: [
+			        'onMenuShareTimeline','onMenuShareAppMessage'
+			    ]
+			});
+
+			wx.ready(function () {
+				wx.onMenuShareTimeline({
+			        title: shareObj.title, // 分享标题
+			        link: shareObj.link, // 分享链接
+			        imgUrl: shareObj.imgUrl // 分享图标
+			    });
+			    wx.onMenuShareAppMessage({
+			        title: shareObj.title, // 分享标题
+			        desc: shareObj.desc, // 分享描述
+			        link: shareObj.link, // 分享链接
+			        imgUrl: shareObj.imgUrl // 分享图标
+			    });
+			});
+		}
+	</script>
 	<script src="js/jquery-2.1.3.min.js"></script>
 	<script src="js/lufylegend-1.9.10.min.js"></script>
 	<script src="js/common.js"></script>
-	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 	<script src="js/backend.js"></script>
 </body>
 </html>
