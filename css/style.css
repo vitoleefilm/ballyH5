@@ -66,7 +66,7 @@ body{width:750px;margin:0 auto;background:#fff;box-sizing:border-box;-moz-box-si
 
 .landscape{display:none;position:fixed;left:0;top:0;width:100%;height:100%;background:url(../imgs/spriteBg.jpg) repeat left top;z-index:999}
 .landscape.run{background-position:center center}
-.landscape img{position:absolute;left:50%;top:50%;margin:-97px 0 0 -55px;-webkit-animation:landscape 1.6s linear infinite;-moz-animation:landscape 1.6s linear infinite;animation:landscape 1.6s linear infinite;-webkit-transform:rotate(-90deg);-moz-transform:rotate(-90deg);transform:rotate(-90deg)}
+.landscape img{position:absolute;left:50%;top:50%;margin:-157px 0 0 -55px;-webkit-animation:landscape 1.6s linear infinite;-moz-animation:landscape 1.6s linear infinite;animation:landscape 1.6s linear infinite;-webkit-transform:rotate(-90deg);-moz-transform:rotate(-90deg);transform:rotate(-90deg)}
 @keyframes landscape{
 0%{transform:rotate(-90deg)}
 50%{transform:rotate(0deg)}
@@ -82,6 +82,7 @@ body{width:750px;margin:0 auto;background:#fff;box-sizing:border-box;-moz-box-si
 50%{-moz-transform:rotate(0deg)}
 100%{-moz-transform:rotate(0deg)}
 }
+.landscape p{position:absolute;left:0;top:50%;width:100%;margin-top:60px;line-height:40px;font-size:24px;color:#762322;text-align:center;letter-spacing:10px}
 
 #wrap{position:relative;width:750px;height:100%;overflow:hidden;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;z-index:0}
 
