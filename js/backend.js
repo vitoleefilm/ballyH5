@@ -20,7 +20,7 @@
 		});
 	};
 });
-console.log(window.location.host+'/imgs/share_cover.jpg');
+
 $('.btnSubmit').click(function(){
 	var $this = $(this);
 	if ($this.hasClass('ajaxed')) {
