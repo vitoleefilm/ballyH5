@@ -173,6 +173,22 @@ $signPackage = $jssdk->GetSignPackage();
 		    var ua = navigator.userAgent.toLowerCase();
 		    return (/micromessenger/.test(ua)) ? true : false ;
 		}
+
+		setShareTimeline = function(title) {
+			wx.onMenuShareTimeline({
+		        title: title, // 分享标题
+		        link: shareObj.link, // 分享链接
+		        imgUrl: shareObj.imgUrl // 分享图标
+		    });
+		};
+		setShareAppMessage = function(desc) {
+			wx.onMenuShareAppMessage({
+		        title: shareObj.title, // 分享标题
+		        desc: desc, // 分享描述
+		        link: shareObj.link, // 分享链接
+		        imgUrl: shareObj.imgUrl // 分享图标
+		    });
+		};
 		if (isWeixinBrowser()) {
 			wx.config({
 				debug:false,
@@ -191,7 +207,7 @@ $signPackage = $jssdk->GetSignPackage();
 			        link: shareObj.link, // 分享链接
 			        imgUrl: shareObj.imgUrl // 分享图标
 			    });
-			    wx.onMenuShareAppMessage({
+				wx.onMenuShareAppMessage({
 			        title: shareObj.title, // 分享标题
 			        desc: shareObj.desc, // 分享描述
 			        link: shareObj.link, // 分享链接

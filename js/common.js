@@ -876,20 +876,11 @@ function onZurichFrame(){
 		backLayer.removeChild(background);
 		
 		$('.city_num').val(resultCity.length);
-		shareObj.desc = '我猜对了'+resultCity.length+'个城市，获得'+scoreAll+'分，即刻赢取 BALLY 秋冬新包！';
+		tmp_desc = '我猜对了'+resultCity.length+'个城市，获得'+scoreAll+'分，即刻赢取 BALLY 秋冬新包！';
 		// 修改微信分享文案
 		if ($.isWeiXin()) {
-			wx.onMenuShareTimeline({
-		        title: shareObj.desc, // 分享标题
-		        link: shareObj.link, // 分享链接
-			    imgUrl: shareObj.imgUrl // 分享图标
-		    });
-			wx.onMenuShareAppMessage({
-		        title: shareObj.title, // 分享标题
-		        desc: shareObj.desc, // 分享描述
-		        link: shareObj.link, // 分享链接
-		        imgUrl: shareObj.imgUrl // 分享图标
-		    });
+			setShareTimeline(tmp_desc);
+			setShareAppMessage(tmp_desc);
 	    }
 
 		$('.score').find('strong').html(scoreAll);
@@ -1035,6 +1026,9 @@ $(function(){
 		$('.score').fadeOut(300,function(){
 			$(this).removeAttr('style');
 		});
+
+		setShareTimeline(shareObj.title);
+		setShareAppMessage(shareObj.desc);
 		
 		$('p', '.cityTip').html('恭喜！您答对了');
 
