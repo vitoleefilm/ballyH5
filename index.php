@@ -158,7 +158,7 @@ $signPackage = $jssdk->GetSignPackage();
 		
 	</section>
 	
-	<section class="landscape"><img src="imgs/mobile.png" alt=""><p>横屏无法正常显示<br>请转动手机开始游戏</p></section>
+	<section class="landscape"><img src="imgs/mobile.png" alt=""><p><span>横屏无法正常显示</span><br>请转动手机开始游戏</p></section>
 	
 	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 	<script type="text/javascript">
