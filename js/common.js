@@ -2,7 +2,7 @@ init(60, 'wrap', window.innerWidth, window.innerHeight, main); //初始化框架
 
 var bgRun, dotRun;
 var backLayer, background, treeLayer, treeBg, codeLayer, codeBg, audio, cloud, resultCity=[], 
-	city = 0, run = 1, score = 0, scoreAll = 0, length = 0, play = 0, tree = 0, code = 0,
+	city = 0, run = 1, score = 0, scoreAll = 0, length = 0, play = 0, tree = 0, code = 0, imgWidth = window.innerWidth, imgHeight = window.innerHeight,
 	imgList = {}, playList = {}, treeList = {}, codeList = {},
 	imgData = new Array(
 		{name:"bg_1", path:"./imgs/page1_bg.jpg"},
@@ -405,16 +405,21 @@ function main(){
 	update();
     LGlobal.stage.addEventListener(LEvent.WINDOW_RESIZE, update);
 	
+	var scale_y = imgHeight / 1206;
+	
 	//游戏逐层初始化
 	backLayer = new LSprite();
+	backLayer.scaleY = scale_y >= 1 ? scale_y : 1;
 	addChild(backLayer);
 	
 	//树层
 	treeLayer = new LSprite();
+	treeLayer.scaleY = scale_y >= 1 ? scale_y : 1;
 	addChild(treeLayer);
 	
 	//钮扣层
 	codeLayer = new LSprite();
+	codeLayer.scaleY = scale_y >= 1 ? scale_y : 1;
 	addChild(codeLayer);
 	
 	//音频

@@ -214,7 +214,12 @@ body{margin:0 auto;background:#fff;box-sizing:border-box;-moz-box-sizing:border-
 
 /* iPhone4 Wechat */
 @media only screen and (max-height:990px){
-
+	.cityTip{top:54%}
+	.cityTip .box{height:300px}
+	
+	.giftForm .box{height:780px}
+	.giftForm .info{height:540px}
+	.giftForm .info li{margin-top:16px}
 }
 
 /* iPhone4 Safari */
