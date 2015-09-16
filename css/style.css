@@ -217,8 +217,11 @@ body{margin:0 auto;background:#fff;box-sizing:border-box;-moz-box-sizing:border-
 	.cityTip{top:54%}
 	.cityTip .box{height:300px}
 	
-	.giftForm .box{height:780px}
-	.giftForm .info{height:540px}
+	.giftForm{top:52%}
+	.giftForm .box{height:760px}
+	.giftForm .gift img{width:500px;margin-left:43px}
+	.giftForm .info{height:520px;padding-top:40px}
+	.giftForm .info ul{margin-top:30px}
 	.giftForm .info li{margin-top:16px}
 }
 
