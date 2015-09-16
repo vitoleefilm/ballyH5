@@ -7,6 +7,9 @@ var backLayer, background, treeLayer, treeBg, codeLayer, codeBg, audio, cloud, r
 	imgData = new Array(
 		{name:"bg_1", path:"./imgs/page1_bg.jpg"},
 		{name:"bg_2", path:"./imgs/page3_bg.jpg"},
+		{name:"london", path:"./imgs/city/london/12/0.jpg"},
+		{name:"milan", path:"./imgs/city/milan/12/0.jpg"},
+		{name:"zurich", path:"./imgs/city/zurich/12/0.jpg"},
 		{name:"audioLondon",path:"./audios/audioLondon.mp3"},
 		{name:"audioMilan",path:"./audios/audioMilan.mp3"},
 		{name:"audioZurich",path:"./audios/audioZurich.mp3"},
@@ -397,7 +400,7 @@ function main(){
 	LGlobal.stageScale = LStageScaleMode.SHOW_ALL;
 	LGlobal.preventDefault = false;
 	LSystem.screen(LStage.FULL_SCREEN);
-	LGlobal.setDebug(true);
+	//LGlobal.setDebug(false);
 	
 	update();
     LGlobal.stage.addEventListener(LEvent.WINDOW_RESIZE, update);
@@ -424,7 +427,7 @@ function main(){
 		background = new LBitmap(new LBitmapData(imgList['bg_1']));
 		backLayer.addChild(background);
 		
-		loadCityLondon();
+		loadCityLondon(0);
 	});
 	
 };
@@ -434,23 +437,36 @@ function update(){
 	$('canvas').attr({'width':window.innerWidth, 'height':window.innerHeight});
 };
 
-function loadCityLondon(){
-	LLoadManage.load(imgDataCode01, function(progress){}, function(result){ imgCode01 = result; });
-	LLoadManage.load(imgDataCode02, function(progress){}, function(result){ imgCode02 = result; });
-	
-	LLoadManage.load(imgDataLondon12, function(progress){}, function(result){ imgLondon12 = result; });
-	LLoadManage.load(imgDataLondon15, function(progress){}, function(result){ imgLondon15 = result; });
-	LLoadManage.load(imgDataLondon23, function(progress){}, function(result){ imgLondon23 = result; });
-	LLoadManage.load(imgDataLondon25, function(progress){}, function(result){ imgLondon25 = result; });
-	LLoadManage.load(imgDataLondon34, function(progress){}, function(result){ imgLondon34 = result; });
-	LLoadManage.load(imgDataLondon35, function(progress){}, function(result){ imgLondon35 = result; });
-	LLoadManage.load(imgDataLondon45, function(progress){}, function(result){ 
-		imgLondon45 = result; 
-		
-		loadCityMilan(); 
-		
-		step_1();
-	});
+function loadCityLondon(num){
+	switch (num){
+		case 0:
+			LLoadManage.load(imgDataLondon12, function(progress){}, function(result){ imgLondon12 = result; loadCityLondon(1); });
+		break;
+		case 1:
+			LLoadManage.load(imgDataCode01, function(progress){}, function(result){ imgCode01 = result; loadCityLondon(2); });
+		break;
+		case 2:
+			LLoadManage.load(imgDataLondon15, function(progress){}, function(result){ imgLondon15 = result; loadCityLondon(3); });
+		break;
+		case 3:
+			LLoadManage.load(imgDataCode02, function(progress){}, function(result){ imgCode02 = result; loadCityLondon(4); });
+		break;
+		case 4:
+			LLoadManage.load(imgDataLondon23, function(progress){}, function(result){ imgLondon23 = result; loadCityLondon(5); });
+		break;
+		case 5:
+			LLoadManage.load(imgDataLondon25, function(progress){}, function(result){ imgLondon25 = result; loadCityLondon(6); });
+		break;
+		case 6:
+			LLoadManage.load(imgDataLondon34, function(progress){}, function(result){ imgLondon34 = result; loadCityLondon(7); });
+		break;
+		case 7:
+			LLoadManage.load(imgDataLondon35, function(progress){}, function(result){ imgLondon35 = result; loadCityLondon(8); });
+		break;
+		case 8:
+			LLoadManage.load(imgDataLondon45, function(progress){}, function(result){ imgLondon45 = result; loadCityMilan(0); step_1(); });
+		break;
+	}
 }
 
 function loadCityMilan(){
@@ -1038,9 +1054,11 @@ $(window).on("scroll.elasticity", function(e) {
 	if (window.orientation == 0 || window.orientation == 180) {
 		//orientation = 'portrait';
 		$('.landscape').hide();
+		$('meta[name=viewport]').attr('content', 'width=750, user-scalable=no, target-densitydpi=device-dpi');
 	}else if (window.orientation == 90 || window.orientation == -90) {
 		//orientation = 'landscape';
 		$('.landscape').show();
+		$('meta[name=viewport]').attr('content', 'width=1500, user-scalable=no, target-densitydpi=device-dpi');
 	}
 });
 
@@ -1057,7 +1075,6 @@ $.extend({
 			img.onload = function(){
 				n++;
 				var t = Math.round(n/l*100);
-				//$("#loading span").text(t+"%");
 				if(t >= 97 && flag){
 					comp();
 					flag = false;
