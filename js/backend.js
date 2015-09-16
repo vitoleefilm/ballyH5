@@ -40,7 +40,7 @@ $('.btnSubmit').click(function(){
 	} else if (mobile_number ==  '' || /^1\d{10}/.test(mobile_number) == false) {
 		$('.giftForm .mobile_number').closest('li').addClass('error');
 		return false;
-	} else if (wechat_name == '' || /^[a-zA-Z0-9_]+$/.test(wechat_name) == false) {
+	} else if (wechat_name != '' && /^[a-zA-Z0-9_]+$/.test(wechat_name) == false) {
 		$('.giftForm .wechat_name').closest('li').addClass('error');
 		return false;
 	}
