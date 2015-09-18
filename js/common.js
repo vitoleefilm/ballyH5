@@ -511,9 +511,10 @@ function step_1(){
 };
 
 function step_2(){
-	$('.slogan, .btnStart, .btnLink').fadeOut(300, function(){
+	$('.slogan, .btnStart, .btnLink, .clause').fadeOut(300, function(){
 		$(this).remove();
 	});
+	$('.clausePop').remove();
 	
 	setTimeout(function(){
 		
