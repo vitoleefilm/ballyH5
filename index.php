@@ -229,5 +229,24 @@ $signPackage = $jssdk->GetSignPackage();
 	<script src="js/lufylegend-1.9.10.min.js"></script>
 	<script src="js/common.js"></script>
 	<script src="js/backend.js"></script>
+	<script type="text/javascript">
+		<? if (strpos($_SERVER['HTTP_HOST'], 'ffsh') !== false) {?>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-63086935-8', 'auto');
+			ga('send', 'pageview');
+		<? } else {?>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-63086935-7', 'auto');
+			ga('send', 'pageview');
+		<? }?>
+	</script>
 </body>
 </html>
