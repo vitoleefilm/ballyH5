@@ -547,7 +547,7 @@ function step_2(){
 	}, 300);
 	
 }
-
+var city_form;
 
 function cityRun(){
 	codeList = {}, treeList = {};
@@ -561,12 +561,17 @@ function cityRun(){
 	LGlobal.setFrameRate(60);
 	
 	if(run == 1 || run == 3 || run == 5 || run == 7){
-		$('button span','.cityForm').removeAttr('class').addClass('run' + (run-1) / 2);
+		var n = (run-1) / 2;
+		$('button span','.cityForm').removeAttr('class').addClass('run' + n);
+		$('input','.cityForm').attr('placeholder', '答错了，您还有'+ (5 - n - 1) +'次机会').css({'letter-spacing':'0', 'padding-left': '0'});
+		city_form = setTimeout(function(){
+			$('input', '.cityForm').attr('placeholder', '再次输入城市名').removeAttr('style');
+		}, 2000)
 	}
 	
 	if(run == 8){
 		$('button span', '.cityForm').removeAttr('class').addClass('run4');
-		$('input','.cityForm').val('');
+		$('input','.cityForm').val('').attr('placeholder', '在此输入城市名');
 		cityEnd();
 		run = 0;
 		
@@ -577,7 +582,7 @@ function cityRun(){
 		
 		return false;
 	}
-	
+		
 	if(city == 0){
 		switch (run){
 			case 1:
@@ -840,6 +845,8 @@ function changeCity(){
 	run = 1;
 	audio.close();
 	$('button span', '.cityForm').removeAttr('class');
+	$('input', '.cityForm').attr('placeholder', '在此输入城市名').removeAttr('style');
+	
 	if(city==0){
 		$('.cityLondon').css('z-index', 0).children().fadeOut(300);
 		
@@ -967,6 +974,14 @@ $(function(){
 		step_2();
 	});
 	
+	$('.cityForm').on('blur', 'input', function(){
+		if($.trim($(this).val()) != ''){
+			$('em','.cityForm').fadeIn();
+		};
+	}).on('focus', 'input',function(){
+		clearTimeout(city_form);
+	});
+	
 	$('.cityForm').on('click', 'button', function(){
 		var value = $(this).siblings('input').val(),
 			answer = $(this).parent().data('val');
@@ -1012,6 +1027,8 @@ $(function(){
 		}
 		
 		cityRun();
+		console.log(score);
+		$('em','.cityForm').fadeOut();
 	});
 	
 	$('.btnNext').click(changeCity);
@@ -1053,12 +1070,18 @@ $(function(){
 	/* 法律条款 */
 	$('.clause').on('click', 'a', function(e){
 		e.preventDefault();
-		$('.clausePop').show().animate({opacity:1, marginTop:-524}, 500);
+		$('.slogan, .btnStart, .btnLink').removeClass('run');
+		$('.clause').fadeOut(500, function(){
+			$('.clausePop').show().animate({opacity:1, marginTop:-524}, 500);	
+		});
+		
 	});
 	$('.clausePop').on('click', '.close', function(e){
 		e.preventDefault();
 		$('.clausePop').animate({opacity:0, marginTop:-454}, 500, function(){
 			$(this).hide();
+			$('.slogan, .btnStart, .btnLink').addClass('run');
+			$('.clause').fadeIn(500);
 		});
 	});
 	
