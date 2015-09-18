@@ -549,7 +549,20 @@ function step_2(){
 }
 var city_form;
 
-function cityRun(){
+function cityRun(c){
+	var n = 0;
+	if(run == 1 || run == 3 || run == 5 || run == 7){
+		n  = (run - 1) / 2;
+		if(!track('STAGE_'+ c +'-'+(n+1))){
+			return false;
+		}
+		$('button span', '.cityForm').removeAttr('class').addClass('run' + n);
+		$('input','.cityForm').attr('placeholder', '答错了，您还有'+ (5 - n - 1) +'次机会').css({'letter-spacing':'0', 'padding-left': '0'});
+		city_form = setTimeout(function(){
+			$('input', '.cityForm').attr('placeholder', '再次输入城市名').removeAttr('style');
+		}, 2000);
+	}
+	
 	codeList = {}, treeList = {};
 	codeLayer.die(), treeLayer.die();
 	codeLayer.removeAllChild();
@@ -560,16 +573,14 @@ function cityRun(){
 	
 	LGlobal.setFrameRate(60);
 	
-	if(run == 1 || run == 3 || run == 5 || run == 7){
-		var n = (run-1) / 2;
-		$('button span','.cityForm').removeAttr('class').addClass('run' + n);
-		$('input','.cityForm').attr('placeholder', '答错了，您还有'+ (5 - n - 1) +'次机会').css({'letter-spacing':'0', 'padding-left': '0'});
-		city_form = setTimeout(function(){
-			$('input', '.cityForm').attr('placeholder', '再次输入城市名').removeAttr('style');
-		}, 2000)
-	}
+	$('em', '.cityForm').fadeOut();
 	
 	if(run == 8){
+		n  = 4;
+		if(!track('STAGE_'+ c +'-'+(n+1))){
+			return false;
+		}
+		
 		$('button span', '.cityForm').removeAttr('class').addClass('run4');
 		$('input','.cityForm').val('').attr('placeholder', '在此输入城市名');
 		cityEnd();
@@ -948,8 +959,12 @@ function onCloudFrame(){
 	if(cloud.x >= 997){
 		cloud.x = -997;
 	};
-}
+};
 
+function track(obj){
+	console.log(obj);
+	return true;
+};
 
 
 $(function(){
@@ -971,8 +986,17 @@ $(function(){
 	}, 500);
 		
 	$('.btnStart').on('click', function(){
-		step_2();
+		if(track('START')){
+			step_2();
+		}
 	});
+	
+	$('.btnLink').on('click', function(e){
+		e.preventDefault();
+		if(track('HERITAGE')){
+			window.location = $(this).attr('href');
+		}
+	})
 	
 	$('.cityForm').on('blur', 'input', function(){
 		if($.trim($(this).val()) != ''){
@@ -984,31 +1008,53 @@ $(function(){
 	
 	$('.cityForm').on('click', 'button', function(){
 		var value = $(this).siblings('input').val(),
-			answer = $(this).parent().data('val');
+			answer = $(this).parent().data('val'),
+			c = '', n = 0;
 			
 		if($.trim(value) == ''){
 			$(this).siblings('input').focus();
 			return false;
 		};
 		
+		switch (city){
+			case 0:
+				c = 'London';
+			break;
+			case 1:
+				c = 'Milan';
+			break;
+			case 2:
+				c = 'Zurich';
+			break;
+		}
+		
 		if(value == answer){
 			switch (run){
 				case 1:
 					run = 2;
+					n = 1;
 					break;
 				case 3:
 					run = 4;
+					n = 2;
 					break;
 				case 5:
 					run = 6;
+					n = 3;
 					break;
 				case 7:
 					run = 9;
+					n = 4;
 					break;
 				case 8:
 					score += 1;
 					break;
 			};
+			
+			if(n!=0 && !track('STAGE_'+c+'-'+n)){
+				return false;
+			}
+			
 			switch (city){
 				case 0:
 					resultCity.push('1');
@@ -1026,45 +1072,47 @@ $(function(){
 			}
 		}
 		
-		cityRun();
-		console.log(score);
-		$('em','.cityForm').fadeOut();
+		cityRun(c);
 	});
 	
 	$('.btnNext').click(changeCity);
 	
 	$('.btnAgain').click(function(){
-		score = 0;
-		scoreAll = 0;
-		city = 0;
-		tree = 0;
-		resultCity = [];
-		
-		backLayer.die();
-		
-		$('.score').fadeOut(300,function(){
-			$(this).removeAttr('style');
-		});
-
-		setShareTimeline(shareObj.title);
-		setShareAppMessage(shareObj.desc);
-		
-		$('p', '.cityTip').html('恭喜！您答对了');
-
-		$('.giftForm .play_time').val(parseInt($('.giftForm .play_time').val()) + 1);
-		
-		$('.cityLondon, .cityMilan, .cityZurich').css('z-index', 0).children().removeAttr('style');
-		
-		step_2();
+		if(track('PLAY_AGAIN')){
+			score = 0;
+			scoreAll = 0;
+			city = 0;
+			tree = 0;
+			resultCity = [];
+			
+			backLayer.die();
+			
+			$('.score').fadeOut(300,function(){
+				$(this).removeAttr('style');
+			});
+	
+			setShareTimeline(shareObj.title);
+			setShareAppMessage(shareObj.desc);
+			
+			$('p', '.cityTip').html('恭喜！您答对了');
+	
+			$('.giftForm .play_time').val(parseInt($('.giftForm .play_time').val()) + 1);
+			
+			$('.cityLondon, .cityMilan, .cityZurich').css('z-index', 0).children().removeAttr('style');
+			
+			step_2();
+		}
 	});
 	
 	$('.btnGift').click(function(){
-		$('.cityForm').remove();
-		
-		$('.score').fadeOut(300,function(){
-			$(this).removeAttr('style');
-		});
-		$('.giftForm').show().animate({opacity:1, marginTop:-324}, 500);
+		if(track('GIFT')){
+			$('.cityForm').remove();
+			
+			$('.score').fadeOut(300,function(){
+				$(this).removeAttr('style');
+			});
+			$('.giftForm').show().animate({opacity:1, marginTop:-324}, 500);
+		}
 	});
 	
 	/* 法律条款 */
