@@ -1049,6 +1049,18 @@ $(function(){
 		$('.giftForm').show().animate({opacity:1, marginTop:-324}, 500);
 	});
 	
+	/* 法律条款 */
+	$('.clause').on('click', 'a', function(e){
+		e.preventDefault();
+		$('.clausePop').show().animate({opacity:1, marginTop:-524}, 500);
+	});
+	$('.clausePop').on('click', '.close', function(e){
+		e.preventDefault();
+		$('.clausePop').animate({opacity:0, marginTop:-454}, 500, function(){
+			$(this).hide();
+		});
+	});
+	
 });
 
 $(window).on("scroll.elasticity", function(e) {
