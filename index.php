@@ -20,7 +20,7 @@ $signPackage = $jssdk->GetSignPackage();
 
     shareObj = {
     	title:'都市狂想',
-    	desc:'猜猜我在哪坐城',
+    	desc:'猜猜我在哪座城市',
     	link: 'http://<? echo $_SERVER['HTTP_HOST'];?>',
     	imgUrl: 'http://<? echo $_SERVER['HTTP_HOST'].'/imgs/share_cover.jpg'?>'
     };
@@ -81,6 +81,9 @@ $signPackage = $jssdk->GetSignPackage();
 					<li>参与活动并成功提交有效联系方式（姓名、联系电话、电子邮件）的参与者，共计2名获奖者，将在Bally验证其真实性及公正性之后，获得由Bally送出的 Eclipse MD.Q 系列手袋。</li>
 					<li>敬请获奖者在参与活动后即刻将正确的联系方式提交，以便工作人员及时联系。若未能提供正确的联系方式以至无法及时联系的中奖者，或参与者已经提供正确的联系方式，但是工作人员未能在活动结束后24小时内与其取得联系，Bally将保留取消奖品的权利。</li>
 					<li>本次活动将总共送出2 个Eclipse MD.Q 系列手袋。礼物不得兑换成同等价值的其他Bally产品或现金。Bally将豁免于产品快递过程中可能造成的礼物损坏或遗失。</li>
+					<li>Bally对本次活动的规则拥有最终解释权。在活动结束前，Bally保留更改或取消礼品赠送的权利。</li>
+					<li>参与者必须年满18周岁，并在中国居住。以下人员不得参与抽奖：Bally巴丽的所有员工及其亲属，本次活动代理商相关人员及其亲属等。</li>
+					<li> 参与本活动即表示本人接受Bally的隐私政策。</li>
 				</ul>
 			</section>
 		</section>

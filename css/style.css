@@ -4,7 +4,7 @@ audio,canvas,video{display:inline-block;*display:inline;*zoom:1;border:0}
 audio:not([controls]){display:none;height:0}
 [hidden]{display:none}
 html{font-size:12px;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;-webkit-tap-highlight-color: rgba(0, 0, 0, 0)}
-html,button,input,select,textarea{font-family:Arial,Simhei,'黑体',Microsoft Yahei,"微软雅黑",sans-serif;color:#363636;border-raidus:0 !important;-webkit-appearance:none}
+html,button,input,select,textarea{font-family:Arial,Simhei,'黑体',Microsoft Yahei,"微软雅黑",sans-serif;color:#363636;border-radius:0 !important;-webkit-appearance:none !important;}
 body{margin:0}
 a{color:#363636;font-weight:lighter}
 a:hover{color:#e20821}
@@ -39,9 +39,9 @@ figure{margin:0}
 form{margin:0}
 fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:0.35em 0.625em 0.75em}
 legend{border:0;padding:0;white-space:normal;*margin-left:-7px;}
-button,input[type="text"],input[type="password"],input[type="number"],input[type="submit"],input[type="reset"],select,textarea{font-size:100%;margin:0;vertical-align:baseline;*vertical-align:middle;background:none;border:0;padding:0;border-raidus:0;-webkit-appearance:none}
+button,input[type="text"],input[type="password"],input[type="number"],input[type="submit"],input[type="reset"],select,textarea{font-size:100%;margin:0;vertical-align:baseline;*vertical-align:middle;background:none;border:0;padding:0;border-radius:0 !important;-webkit-appearance:none !important;}
 button,input,areatext{line-height:normal;outline:none !important}
-button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:none;cursor:pointer;*overflow:visible;}
+button,html input[type="button"],input[type="reset"],input[type="submit"]{border-radius:0 !important;-webkit-appearance:none !important;cursor:pointer;*overflow:visible;}
 button[disabled],input[disabled]{cursor:default}
 input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0;*height:13px;*width:13px;}
 input[type="search"]{-webkit-appearance:none;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}
@@ -107,7 +107,7 @@ body{margin:0 auto;background:#fff;box-sizing:border-box;-moz-box-sizing:border-
 .clause a{color:#fff; text-decoration:underline}
 
 .clausePop{display:none;opacity:0;position:absolute;left:50%;top:50%;margin:-454px 0 0 -300px;padding:2px;border:7px solid rgba(255,255,255,.9);z-index:21}
-.clausePop .box{position:relative;width:586px;height:1030px;background-color:rgba(255,255,255,.9);box-sizing:border-box;padding:40px}
+.clausePop .box{position:relative;width:586px;height:1030px;background-color:rgba(255,255,255,.9);box-sizing:border-box;padding:40px ;overflow-y: scroll;-webkit-overflow-scrolling: touch;}
 .clausePop .box .close{position:absolute;right:30px;top:30px;z-index:1}
 .clausePop .box strong{display:block;font-size:48px;color:#463d37;line-height:56px}
 .clausePop .box li{font-size:24px;line-height:36px;color:#463d37;margin-top:40px;padding-left:50px;position:relative}
@@ -117,11 +117,14 @@ body{margin:0 auto;background:#fff;box-sizing:border-box;-moz-box-sizing:border-
 .clausePop .box li:nth-child(3):before{content:'3'}
 .clausePop .box li:nth-child(4):before{content:'4'}
 .clausePop .box li:nth-child(5):before{content:'5'}
+.clausePop .box li:nth-child(6):before{content:'6'}
+.clausePop .box li:nth-child(7):before{content:'7'}
+.clausePop .box li:nth-child(8):before{content:'8'}
 
 /**/
 .cityForm{opacity:0;position:absolute;bottom:-40px;left:50%;width:256px;margin-left:-128px;text-align:center;z-index:2;-webkit-transition:all .5s linear;-moz-transition:all .5s linear;transition:all .5s linear;overflow:hidden}
 .cityForm.run{bottom:30px;opacity:1}
-.cityForm input{width:251px;padding-left:5px;height:46px;line-height:46px;font-size:24px;color:#fff;text-align:center;letter-spacing:10px;border-bottom:2px solid #fff;margin-bottom:5px;border-raidus:0;-webkit-appearance:none}
+.cityForm input{width:251px;padding-left:5px;height:46px;line-height:46px;font-size:24px;color:#fff;text-align:center;letter-spacing:10px;border-bottom:2px solid #fff;margin-bottom:5px;border-radius:0 !important;-webkit-appearance:none !important;}
 .cityForm input[placeholder]{color:#fff !important}
 .cityForm ::-webkit-input-placeholder{color:#fff !important}
 .cityForm :-moz-placeholder{color:#fff}
@@ -201,7 +204,7 @@ body{margin:0 auto;background:#fff;box-sizing:border-box;-moz-box-sizing:border-
 .giftForm .info p{text-align:center;font-size:24px;line-height:36px;color:#535a64;letter-spacing:7.5px;padding-left:6px}
 .giftForm .info ul{margin-top:40px}
 .giftForm .info li{width:460px;margin:24px auto 0;overflow:hidden}
-.giftForm .info li input{width:456px;height:75px;font-size:24px;color:#535a64;text-align:center;border:2px solid #535a64;letter-spacing:10px;border-raidus:0;-webkit-appearance:none}
+.giftForm .info li input{width:456px;height:75px;font-size:24px;color:#535a64;text-align:center;border:2px solid #535a64;letter-spacing:10px;border-radius:0 !important;-webkit-appearance:none !important;}
 .giftForm .info li input[placeholder]{color:#535a64 !important}
 .giftForm .info li ::-webkit-input-placeholder{color:#535a64 !important}
 .giftForm .info li :-moz-placeholder{color:#535a64}

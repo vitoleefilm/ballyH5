@@ -962,6 +962,8 @@ function onCloudFrame(){
 };
 
 function track(obj){
+	// ga("send", "event", "click", "BALLYGOLDENWEEKH5", obj);
+	ga("send", "event", "button","click", obj);
 	console.log(obj);
 	return true;
 };
@@ -1122,6 +1124,7 @@ $(function(){
 		$('.clause').fadeOut(500, function(){
 			$('.clausePop').show().animate({opacity:1, marginTop:-524}, 500);	
 		});
+		$(window).unbind('touchmove');
 		
 	});
 	$('.clausePop').on('click', '.close', function(e){
@@ -1131,6 +1134,7 @@ $(function(){
 			$('.slogan, .btnStart, .btnLink').addClass('run');
 			$('.clause').fadeIn(500);
 		});
+		$(window).bind('touchmove');
 	});
 	
 });
